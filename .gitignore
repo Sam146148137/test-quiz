@@ -1,0 +1,9 @@
+.*
+!.gitignore
+!.babelrc
+!.eslintrc.json
+!.env
+
+*.swp
+
+node_modules/
