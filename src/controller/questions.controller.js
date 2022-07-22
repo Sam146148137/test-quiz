@@ -29,6 +29,16 @@ class QuestionsController {
     }
   }
 
+  static async list(req, res, next) {
+    try {
+      const { limit, offset } = req.query;
+      const questions = await QuestionsServices.list(limit, offset);
+      SuccessHandlerUtil.handleList(res, next, questions);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async getById(req, res, next) {
     try {
       const { id } = req.params;

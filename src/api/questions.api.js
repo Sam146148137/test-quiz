@@ -19,6 +19,11 @@ router.put('/:id',
   QuestionsValidationMiddleware.validateUpdateArgs,
   QuestionsController.updateById);
 
+router.get('/',
+  AuthMiddlaware.authenticateFor([role.admin]),
+  QuestionsValidationMiddleware.validateListArgs,
+  QuestionsController.list);
+
 router.get('/:id',
   AuthMiddlaware.authenticateFor([role.admin]),
   QuestionsValidationMiddleware.validateGetArgs,

@@ -14,6 +14,10 @@ class QuestionsValidation {
     ValidatorUtil.validateArgs(req, QuestionsSchema.deleteSchema, next);
   }
 
+  static validateListArgs(req, res, next) {
+    ValidatorUtil.validateArgs(req, QuestionsSchema.listSchema, next);
+  }
+
   static validateGetArgs(req, res, next) {
     ValidatorUtil.validateArgs(req, QuestionsSchema.getSchema, next);
   }

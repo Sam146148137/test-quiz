@@ -1,7 +1,9 @@
 // NPM Modules
 import Joi from 'joi';
 
-import { ID, Index } from './type';
+import {
+  ID, Index, limit, offset
+} from './type';
 
 const QuestionsSchema = {
   addSchema: {
@@ -34,11 +36,18 @@ const QuestionsSchema = {
       'grade')
   },
 
-  deleteSchema: {
+  getSchema: {
     params: Joi.object({ id: ID.required() })
   },
 
-  getSchema: {
+  listSchema: {
+    query: Joi.object({
+      limit,
+      offset
+    })
+  },
+
+  deleteSchema: {
     params: Joi.object({ id: ID.required() })
   }
 };

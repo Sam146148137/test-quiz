@@ -6,7 +6,9 @@ import { QuestionsSchema } from './schemes';
 import BaseModel from './base.model';
 
 class QuestionsModel extends BaseModel {
-
+  list(limit, offset) {
+    return this.model.find({}).skip(offset).limit(limit);
+  }
 }
 
 const model = mongoose.model('Questions', QuestionsSchema);

@@ -22,6 +22,10 @@ class QuestionsServices {
     return question;
   }
 
+  static async list(limit, offset) {
+    return QuestionsModel.list(limit, offset);
+  }
+
   static async deleteById(id) {
     await QuestionsModel.getOneOrFaile(id);
 

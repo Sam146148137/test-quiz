@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@meanie/mongoose-to-json": "^2.6.0",
+    "babel": "^6.23.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cookie-parser": "^1.4.6",
@@ -43,5 +44,15 @@
     "parse-duration": "^1.0.2",
     "regenerator-runtime": "^0.13.9",
     "winston": "^3.6.0"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sam146148137/test-quiz.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sam146148137/test-quiz/issues"
+  },
+  "homepage": "https://github.com/Sam146148137/test-quiz#readme"
 }
