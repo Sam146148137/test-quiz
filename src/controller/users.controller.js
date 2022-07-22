@@ -32,8 +32,8 @@ export default class UsersController {
       update.email = update.email.toLowerCase();
       update.password = CryptoUtil.createHash(update.password);
 
-      const question = await UsersServices.updateById(id, update);
-      SuccessHandlerUtil.handleUpdate(res, next, question);
+      const user = await UsersServices.updateById(id, update);
+      SuccessHandlerUtil.handleUpdate(res, next, user);
     } catch (error) {
       next(error);
     }
@@ -42,8 +42,8 @@ export default class UsersController {
   static async list(req, res, next) {
     try {
       const { limit, offset } = req.query;
-      const questions = await UsersServices.list(limit, offset);
-      SuccessHandlerUtil.handleList(res, next, questions);
+      const users = await UsersServices.list(limit, offset);
+      SuccessHandlerUtil.handleList(res, next, users);
     } catch (error) {
       next(error);
     }
@@ -53,9 +53,9 @@ export default class UsersController {
     try {
       const { id } = req.params;
 
-      const question = await UsersServices.getById(id);
+      const user = await UsersServices.getById(id);
 
-      SuccessHandlerUtil.handleGet(res, next, question);
+      SuccessHandlerUtil.handleGet(res, next, user);
     } catch (error) {
       next(error);
     }
