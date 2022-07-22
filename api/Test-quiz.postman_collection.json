@@ -17,7 +17,9 @@
 							"script": {
 								"exec": [
 									"const res = pm.response.json();",
-									"pm.environment.set(\"AdminToken\", res.access_token);"
+									"pm.environment.set(\"AdminToken\", res.accessToken);",
+									"",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -80,7 +82,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"paul\",\n    \"lastName\": \"mccartney\",\n    \"age\": 79,\n    \"email\": \"paul@gmail.com\",\n    \"password\": \"mccartney79\"\n    \n}",
+							"raw": "{\n    \"firstName\": \"paul\",\n    \"lastName\": \"mccartney\",\n    \"age\": 79,\n    \"email\": \"paul7@gmail.com\",\n    \"password\": \"mccartney79\"\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -94,6 +96,249 @@
 							],
 							"path": [
 								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Create Question",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"second question\",\n    \"text\": \"second question text\",\n    \"answers\": [\n        \"first answer 11\",\n        \"second answer 22\"\n    ],\n    \"rightAnswer\": 0,\n    \"grade\": \"9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/questions/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"questions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"first question 777\",\n    \"text\": \"firts question text ++++99\",\n    \"answers\": [\n        \"first answer 111\",\n        \"second answer 222\",\n        \"second answer 333\"\n    ],\n    \"rightAnswer\": 1,\n    \"grade\": \"7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/questions/62d572090a64aee1a94402b2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"questions",
+								"62d572090a64aee1a94402b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/questions/62d572090a64aee1a94402b2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"questions",
+								"62d572090a64aee1a94402b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Question",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/questions/62d572090a64aee1a94402b2",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"questions",
+								"62d572090a64aee1a94402b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Questions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/questions?limit=10&offset=0",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"questions"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quizzes",
+			"item": [
+				{
+					"name": "Create Quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"thired quiz\",\n    \"questions\": [\n        \"62d570fa962f9bc8aa4a4e4e\",\n        \"62da5d8576b026b1c8bbfd35\"\n    ],\n    \"description\": \"test desc 3 \",\n    \"status\": \"active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/quizzes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"quizzes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Quizzes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/quizzes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"quizzes"
 							]
 						}
 					},
