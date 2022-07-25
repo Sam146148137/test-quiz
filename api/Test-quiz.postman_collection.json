@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "23f3938f-3ae0-4fbf-ab18-e4447cd50783",
+		"_postman_id": "9ac21f07-a1d0-4d11-ae73-b70895c8bc5a",
 		"name": "Test-quiz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21973784"
+		"_exporter_id": "14487765"
 	},
 	"item": [
 		{
@@ -96,6 +96,197 @@
 							],
 							"path": [
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"manush\",\n    \"lastName\": \"vanush\",\n    \"age\": 21,\n    \"email\": \"manush.vanush@gmail.com\",\n    \"password\": \"manush13398\",\n    \"role\": \"member\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/add",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"karmen\",\n    \"lastName\": \"varsikyan\",\n    \"age\": 23,\n    \"email\": \"karin.varsikyan@gmail.com\",\n    \"password\": \"namusunes\",\n    \"role\": \"member\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/62db0ebd05f11df385895073",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"62db0ebd05f11df385895073"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/62db0ebd05f11df385895073",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"62db0ebd05f11df385895073"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"karmen\",\n    \"lastName\": \"varsikyan\",\n    \"age\": 23,\n    \"email\": \"karin.varsikyan@gmail.com\",\n    \"password\": \"namusunes\",\n    \"role\": \"member\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/users/62db0ebd05f11df385895073",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"users",
+								"62db0ebd05f11df385895073"
 							]
 						}
 					},

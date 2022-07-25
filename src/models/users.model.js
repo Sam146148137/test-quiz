@@ -9,6 +9,10 @@ class UsersModel extends BaseModel {
   findByEmail(email) {
     return this.model.findOne({ email });
   }
+
+  list(limit, offset) {
+    return this.model.find({}).skip(offset).limit(limit);
+  }
 }
 
 const model = mongoose.model('Users', UsersSchema);
