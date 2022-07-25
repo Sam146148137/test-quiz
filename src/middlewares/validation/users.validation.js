@@ -11,7 +11,7 @@ class UsersValidation {
   }
 
   static validateUpdateArgs(req, res, next) {
-    ValidatorUtil.validateArgs(req, UsersSchema.addSchema, next);
+    ValidatorUtil.validateArgs(req, UsersSchema.updateSchema, next);
   }
 
   static validateListArgs(req, res, next) {

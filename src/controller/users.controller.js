@@ -1,6 +1,6 @@
 // Local Modules
 import UsersServices from '../services/users.services';
-import { CryptoUtil, SuccessHandlerUtil } from '../utils';
+import { SuccessHandlerUtil } from '../utils';
 import { UsersDto } from '../dto';
 
 export default class UsersController {
@@ -28,9 +28,6 @@ export default class UsersController {
     try {
       const { id } = req.params;
       const update = req.body;
-
-      update.email = update.email.toLowerCase();
-      update.password = CryptoUtil.createHash(update.password);
 
       const user = await UsersServices.updateById(id, update);
       SuccessHandlerUtil.handleUpdate(res, next, user);

@@ -17,6 +17,10 @@ export default class UsersServices {
   static async updateById(id, update) {
     await UsersModel.getOneOrFaile(id);
 
+    if (update.email) update.email = update.email.toLowerCase();
+
+    if (update.password) update.password = CryptoUtil.createHash(update.password);
+
     return UsersModel.updateById(id, update);
   }
 

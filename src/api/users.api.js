@@ -3,7 +3,7 @@ import express from 'express';
 
 // Local Modules
 import { UsersValidationMiddleware } from '../middlewares/validation';
-import UsersController from '../controller/users.controller';
+import { UsersController } from '../controller';
 import AuthMiddleware from '../auth/auth.middlware';
 import role from '../enum/role.enum';
 
@@ -13,7 +13,7 @@ router.post('/',
   UsersValidationMiddleware.validateSignupArgs,
   UsersController.signup);
 
-router.post('/create',
+router.post('/add',
   AuthMiddleware.authenticateFor([role.admin]),
   UsersValidationMiddleware.validateAddArgs,
   UsersController.add);
