@@ -7,6 +7,10 @@ class Quizzesvalidation {
     ValidatorUtil.validateArgs(req, QuizzesScema.addSchema, next);
   }
 
+  static validateUpdateArgs(req, res, next) {
+    ValidatorUtil.validateArgs(req, QuizzesScema.updateSchema, next);
+  }
+
   static validateListArgs(req, res, next) {
     ValidatorUtil.validateArgs(req, QuizzesScema.listScema, next);
   }

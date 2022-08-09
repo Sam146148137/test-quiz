@@ -6,12 +6,18 @@ class QuizzesServices {
     return QuizzesModel.create(payload);
   }
 
-  static list(limit, offset) {
-    return QuizzesModel.list(limit, offset);
+  static async updateById(id, update) {
+    await QuizzesModel.getOneOrFaile(id);
+
+    return QuizzesModel.updateById(id, update);
   }
 
   static getById(id) {
-    return QuizzesModel.getById(id);
+    return QuizzesModel.getDetailedById(id);
+  }
+
+  static list(limit, offset) {
+    return QuizzesModel.list(limit, offset);
   }
 }
 

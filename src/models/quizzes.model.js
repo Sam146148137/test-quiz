@@ -10,9 +10,15 @@ class QuizzesModel extends BaseModel {
     return this.model
       .find({})
       .populate('user')
-    //   .lean()
+      .populate('questions')
       .skip(offset)
       .limit(limit);
+  }
+
+  getDetailedById(_id) {
+    return this.model
+      .findOne({ _id })
+      .populate('questions');
   }
 }
 

@@ -15,11 +15,26 @@ class QuizzesController {
     }
   }
 
+  static async updateById(req, res, next) {
+    try {
+      const update = req.body;
+      const { id } = req.params;
+      const { userId } = res.locals.auth.user;
+      update.userId = userId;
+
+      const quizze = await QuizzesServices.updateById(id, update);
+      SuccessHandlerUtil.handleUpdate(res, next, quizze);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async list(req, res, next) {
     try {
       const { limit, offset } = req.query;
-      const quzzies = await QuizzesServices.list(limit, offset);
-      SuccessHandlerUtil.handleList(res, next, quzzies);
+
+      const quizzes = await QuizzesServices.list(limit, offset);
+      SuccessHandlerUtil.handleList(res, next, quizzes);
     } catch (error) {
       next(error);
     }

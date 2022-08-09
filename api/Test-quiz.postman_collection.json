@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9ac21f07-a1d0-4d11-ae73-b70895c8bc5a",
+		"_postman_id": "23f3938f-3ae0-4fbf-ab18-e4447cd50783",
 		"name": "Test-quiz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14487765"
+		"_exporter_id": "21973784"
 	},
 	"item": [
 		{
@@ -96,197 +96,6 @@
 							],
 							"path": [
 								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create User",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"manush\",\n    \"lastName\": \"vanush\",\n    \"age\": 21,\n    \"email\": \"manush.vanush@gmail.com\",\n    \"password\": \"manush13398\",\n    \"role\": \"member\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{local}}/users/add",
-							"host": [
-								"{{local}}"
-							],
-							"path": [
-								"users",
-								"add"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Edit User",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"karmen\",\n    \"lastName\": \"varsikyan\",\n    \"age\": 23,\n    \"email\": \"karin.varsikyan@gmail.com\",\n    \"password\": \"namusunes\",\n    \"role\": \"member\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{local}}/users/62db0ebd05f11df385895073",
-							"host": [
-								"{{local}}"
-							],
-							"path": [
-								"users",
-								"62db0ebd05f11df385895073"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Users",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{local}}/users/",
-							"host": [
-								"{{local}}"
-							],
-							"path": [
-								"users",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get User",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{local}}/users/62db0ebd05f11df385895073",
-							"host": [
-								"{{local}}"
-							],
-							"path": [
-								"users",
-								"62db0ebd05f11df385895073"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete User",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"karmen\",\n    \"lastName\": \"varsikyan\",\n    \"age\": 23,\n    \"email\": \"karin.varsikyan@gmail.com\",\n    \"password\": \"namusunes\",\n    \"role\": \"member\"\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{local}}/users/62db0ebd05f11df385895073",
-							"host": [
-								"{{local}}"
-							],
-							"path": [
-								"users",
-								"62db0ebd05f11df385895073"
 							]
 						}
 					},
@@ -489,7 +298,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"thired quiz\",\n    \"questions\": [\n        \"62d570fa962f9bc8aa4a4e4e\",\n        \"62da5d8576b026b1c8bbfd35\"\n    ],\n    \"description\": \"test desc 3 \",\n    \"status\": \"active\"\n}",
+							"raw": "{\n    \"title\": \"thired quiz\",\n    \"questionIds\": [\n        \"62d570fa962f9bc8aa4a4e4e\",\n        \"62da5d8576b026b1c8bbfd35\"\n    ],\n    \"description\": \"test desc 3 \",\n    \"status\": \"active\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -530,6 +339,112 @@
 							],
 							"path": [
 								"quizzes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/quizzes/62f0c72c51b89b139e1e2c98",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"quizzes",
+								"62f0c72c51b89b139e1e2c98"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Quiz",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"thired quiz edit\",\n    \"questionIds\": [\n        \"62da5d8576b026b1c8bbfd35\"\n    ],\n    \"description\": \"test desc 3\",\n    \"status\": \"active\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/quizzes/62f0c72c51b89b139e1e2c98",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"quizzes",
+								"62f0c72c51b89b139e1e2c98"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quiz Answer",
+			"item": [
+				{
+					"name": "Craete Quiz Answer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quizId\": \"62f0c9ca40cef945ade4dc85\",\n    \"answers\": [\n        {\n            \"questionId\": \"62d570fa962f9bc8aa4a4e4e\",\n            \"answer\": 0\n        },\n        {\n            \"questionId\": \"62da5d8576b026b1c8bbfd35\",\n            \"answer\": 1\n        }\n    ]\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/quiz-answers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"quiz-answers"
 							]
 						}
 					},

@@ -4,3 +4,15 @@ export const user = {
   foreignField: '_id',
   justOne: true
 };
+
+export const questions = {
+  ref: 'Questions',
+  localField: 'questionIds',
+  foreignField: '_id'
+};
+
+export const quiz = {
+  ref: 'Quizzes',
+  localField: 'quizId',
+  foreignField: '_id'
+};

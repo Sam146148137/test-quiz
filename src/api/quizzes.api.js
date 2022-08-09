@@ -14,14 +14,19 @@ router.post('/',
   QuizzesvalidationMiddleware.validateAddArgs,
   QuizzesController.add);
 
+router.put('/:id',
+  AuthMiddlaware.authenticateFor([role.admin]),
+  QuizzesvalidationMiddleware.validateUpdateArgs,
+  QuizzesController.updateById);
+
+router.get('/:id',
+  AuthMiddlaware.authenticateFor([role.admin]),
+  QuizzesvalidationMiddleware.validateGetArgs,
+  QuizzesController.getById);
+
 router.get('/',
   AuthMiddlaware.authenticateFor([role.admin]),
   QuizzesvalidationMiddleware.validateListArgs,
   QuizzesController.list);
-
-router.get('/',
-  AuthMiddlaware.authenticateFor([role.admin]),
-  QuizzesvalidationMiddleware.validateGetArgs,
-  QuizzesController.getById);
 
 export default router;

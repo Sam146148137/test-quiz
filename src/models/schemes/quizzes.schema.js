@@ -4,6 +4,7 @@ import mongooseHidden from 'mongoose-hidden';
 import mongooseToJson from '@meanie/mongoose-to-json';
 import mongooseIdValidator from 'mongoose-id-validator';
 
+import { user, questions } from './virtuals';
 import status from '../../enum/status.enum';
 
 const defaultHidden = {
@@ -19,13 +20,14 @@ const { ObjectId } = mongoose.Schema.Types;
 const QuizzesScema = new mongoose.Schema({
   userId: { type: ObjectId, ref: 'Users', required: true },
   title: { type: String, required: true },
-  questions: { type: Array, ref: 'Questions', required: true },
+  questionIds: { type: Array, ref: 'Questions', required: true },
   description: { type: String },
   status: { type: String, enum: Object.values(status), default: status.passive }
 
-});
+}, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
 
-// QuizzesScema.virtual('user', user);
+QuizzesScema.virtual('user', user);
+QuizzesScema.virtual('questions', questions);
 
 QuizzesScema.plugin(hiddenSchema);
 QuizzesScema.plugin(mongooseToJson);
