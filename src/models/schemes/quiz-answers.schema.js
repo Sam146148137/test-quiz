@@ -22,7 +22,7 @@ const QuizAnswersSchema = new mongoose.Schema({
   questionIds: { type: Array, ref: 'Questions', required: true },
   answers: { type: Mixed, required: true },
   score: { type: Number, required: true }
-});
+}, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
 
 QuizAnswersSchema.virtual('user', user);
 QuizAnswersSchema.virtual('questions', questions);
