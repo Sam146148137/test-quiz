@@ -24,6 +24,8 @@ const QuizAnswersSchema = new mongoose.Schema({
   score: { type: Number, required: true }
 }, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
 
+QuizAnswersSchema.index({ userId: 1, quizId: 1 }, { unique: true });
+
 QuizAnswersSchema.virtual('user', user);
 QuizAnswersSchema.virtual('questions', questions);
 QuizAnswersSchema.virtual('quiz', quiz);

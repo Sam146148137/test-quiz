@@ -4,6 +4,9 @@ import mongooseHidden from 'mongoose-hidden';
 import mongooseToJson from '@meanie/mongoose-to-json';
 import mongooseIdValidator from 'mongoose-id-validator';
 
+// Local Modules
+import AnswersSchema from './answers.schema';
+
 const defaultHidden = {
   index: true,
   __v: true,
@@ -18,8 +21,7 @@ const QuestionsSchema = new mongoose.Schema({
   userId: { type: ObjectId, ref: 'Users', required: true },
   title: { type: String, required: true },
   text: { type: String, required: true },
-  answers: { type: Array, required: true },
-  rightAnswer: { type: Number, required: true },
+  answers: [AnswersSchema],
   grade: { type: Number, required: true }
 }, { timestamps: true, toObject: true, toJSON: true });
 

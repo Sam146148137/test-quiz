@@ -10,6 +10,8 @@ class QuizAnswersServices {
   static async add(payload) {
     const { quizId, answers } = payload;
 
+    await QuizzesModel.getOneOrFaile(quizId);
+
     const { questions } = await QuizzesModel.getDetailedById(quizId);
 
     if (answers.length !== questions.length) {
@@ -21,12 +23,15 @@ class QuizAnswersServices {
 
     answers.forEach((a) => {
       _.find(questions, (q) => {
-        if (a.questionId === q.id && a.answer === q.rightAnswer) {
-          score += q.grade;
-          questionIds.push(q.id);
+        if (a.questionId === q.id) {
+          _.find(q.answers, (ans) => {
+            if (a.answer === ans.id && ans.right === true) {
+              score += q.grade;
+            }
+          });
         }
-        return a.questionId;
       });
+      questionIds.push(a.questionId);
     });
 
     payload.questionIds = questionIds;
