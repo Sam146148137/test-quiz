@@ -126,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"second question\",\n    \"text\": \"second question text\",\n    \"answers\": [\n        \"first answer 11\",\n        \"second answer 22\"\n    ],\n    \"rightAnswer\": 0,\n    \"grade\": \"9\"\n}",
+							"raw": "{\n    \"title\":\"Հարց առաջին\",\n    \"text\": \"քանի պատգամավոր կան ազգային ժողովում\",\n    \"answers\": [\n        {\n            \"title\":\"կան 131\",\n            \"right\": true \n        },\n\n        {\n            \"title\":\"կան 100\",\n            \"right\": false \n        }\n        \n        \n    ],\n    \"grade\": \"9\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"first question 777\",\n    \"text\": \"firts question text ++++99\",\n    \"answers\": [\n        \"first answer 111\",\n        \"second answer 222\",\n        \"second answer 333\"\n    ],\n    \"rightAnswer\": 1,\n    \"grade\": \"7\"\n}",
+							"raw": "{\n    \"title\": \"Հարց երկրորդ\",\n        \"text\": \"երբ է ընդունվել Հայաստանի Սահմանադրությունը\",\n        \"answers\": [\n            {\n                \"title\": \"1995 թվականի հուլիսի 5-ին\",\n                \"right\": true\n            },\n            {\n                \"title\": \"1995 թվականի հուլիսի 15-ին\",\n                \"right\": false\n            },\n            {\n                \"title\": \"1997 թվականի հուլիսի 15-ին\",\n                \"right\": false\n            }\n        ],\n        \"grade\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,13 +171,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/questions/62d572090a64aee1a94402b2",
+							"raw": "{{host}}/questions/62f3787ccc286ade29bb1653",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"questions",
-								"62d572090a64aee1a94402b2"
+								"62f3787ccc286ade29bb1653"
 							]
 						}
 					},
@@ -199,13 +199,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/questions/62d572090a64aee1a94402b2",
+							"raw": "{{local}}/questions/62f3787ccc286ade29bb1653",
 							"host": [
 								"{{local}}"
 							],
 							"path": [
 								"questions",
-								"62d572090a64aee1a94402b2"
+								"62f3787ccc286ade29bb1653"
 							]
 						}
 					},
@@ -255,22 +255,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/questions?limit=10&offset=0",
+							"raw": "{{host}}/questions",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"questions"
-							],
-							"query": [
-								{
-									"key": "limit",
-									"value": "10"
-								},
-								{
-									"key": "offset",
-									"value": "0"
-								}
 							]
 						}
 					},
@@ -298,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"thired quiz\",\n    \"questionIds\": [\n        \"62d570fa962f9bc8aa4a4e4e\",\n        \"62da5d8576b026b1c8bbfd35\"\n    ],\n    \"description\": \"test desc 3 \",\n    \"status\": \"active\"\n}",
+							"raw": "{\n    \"title\": \"Առաջին հարցաշար\",\n    \"questionIds\": [\n        \"62f37671cc286ade29bb164d\",\n        \"62f3787ccc286ade29bb1653\"\n    ],\n    \"description\": \"Ազգանին ժողով\",\n    \"status\": \"active\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -360,13 +350,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/quizzes/62f0c72c51b89b139e1e2c98",
+							"raw": "{{host}}/quizzes/62f37b87cc286ade29bb1675",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"quizzes",
-								"62f0c72c51b89b139e1e2c98"
+								"62f37b87cc286ade29bb1675"
 							]
 						}
 					},
@@ -431,7 +421,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quizId\": \"62f0c9ca40cef945ade4dc85\",\n    \"answers\": [\n        {\n            \"questionId\": \"62d570fa962f9bc8aa4a4e4e\",\n            \"answer\": 0\n        },\n        {\n            \"questionId\": \"62da5d8576b026b1c8bbfd35\",\n            \"answer\": 1\n        }\n    ]\n\n}",
+							"raw": "{\n    \"quizId\": \"62f37b87cc286ade29bb1675\",\n    \"answers\": [\n        {\n            \"questionId\": \"62f37671cc286ade29bb164d\",\n            \"answer\": \"62f37671cc286ade29bb164e\"\n        },\n        {\n            \"questionId\": \"62f3787ccc286ade29bb1653\",\n            \"answer\": \"62f379c7cc286ade29bb1665\"\n        }\n    ]\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
