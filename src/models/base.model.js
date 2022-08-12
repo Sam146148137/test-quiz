@@ -7,6 +7,10 @@ class BaseModel {
     this.model = model;
   }
 
+  get() {
+    return this.model.find({});
+  }
+
   create(payload) {
     return this.model.create(payload);
   }

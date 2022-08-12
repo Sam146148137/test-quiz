@@ -6,6 +6,7 @@
     "start": "babel-node src/bin/www.js",
     "dev": "babel-watch src/bin/www.js",
     "seed": "babel-node seed/seed.js",
+    "dev-seed": "babel-node seed/dev/seed.js",
     "lint-no-fix": "eslint src/",
     "lint": "eslint --fix src/"
   },
