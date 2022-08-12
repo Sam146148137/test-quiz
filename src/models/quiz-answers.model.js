@@ -6,7 +6,11 @@ import { QuizAnswersSchema } from './schemes';
 import BaseModel from './base.model';
 
 class QuizAnswersModel extends BaseModel {
-
+  getDetailedById(id) {
+    return this.model
+      .find({ quizId: id })
+      .populate('user');
+  }
 }
 
 const model = mongoose.model('QuizAnswers', QuizAnswersSchema);

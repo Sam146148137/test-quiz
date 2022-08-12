@@ -1,5 +1,5 @@
 // Local Modules
-import UsersServices from '../services/users.services';
+import { UsersServices } from '../services';
 import { SuccessHandlerUtil } from '../utils';
 import { UsersDto } from '../dto';
 

@@ -77,8 +77,16 @@ export default class AuthService {
     const accessTokenExpiresAt = new Date().getTime() + parse(ACCESS_TOKEN_ACTIVE_TIME);
     const refreshTokenExpiresAt = new Date().getTime() + parse(REFRESH_TOKEN_ACTIVE_TIME);
     const scope = `access:${role}`;
+
     const payload = {
-      accessToken, refreshToken, email, userId, scope, accessTokenExpiresAt, refreshTokenExpiresAt
+      accessToken,
+      refreshToken,
+      email,
+      userId,
+      scope,
+      accessTokenExpiresAt,
+      refreshTokenExpiresAt,
+      type: (role === 'member') ? 'website' : role
     };
 
     // TODO save in redis
