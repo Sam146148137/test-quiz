@@ -10,6 +10,7 @@ export default class UsersServices {
 
     payload.email = email.toLowerCase();
     payload.password = CryptoUtil.createHash(password);
+    payload.role = 'member';
 
     return UsersModel.create(payload);
   }

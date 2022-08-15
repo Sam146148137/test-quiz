@@ -2,19 +2,10 @@
 import { QuizAnswersModel } from '../models';
 
 class StatisticsServices {
-  static async getById(id) {
-    const statistics = await QuizAnswersModel.getDetailedById(id);
+  static async bestAnswers(id) {
+    const bestAnswers = await QuizAnswersModel.bestAnswersById(id);
 
-    const statisticResult = [];
-    statistics.forEach((statistic) => {
-      statisticResult.push({
-        firstname: statistic.user.firstName,
-        lastname: statistic.user.lastName,
-        score: statistic.score
-      });
-    });
-
-    return statisticResult;
+    return bestAnswers;
   }
 }
 
