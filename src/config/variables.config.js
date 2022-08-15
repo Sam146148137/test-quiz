@@ -14,6 +14,12 @@ const config = {
     JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
     ACCESS_TOKEN_ACTIVE_TIME: process.env.ACCESS_TOKEN_ACTIVE_TIME || '1h',
     REFRESH_TOKEN_ACTIVE_TIME: process.env.REFRESH_TOKEN_ACTIVE_TIME || '12h'
+  },
+
+  EMAIL: {
+    SERVICE: process.env.EMAIL_SERVICE,
+    USERNAME: process.env.EMAIL_USERNAME,
+    PASSWORD: process.env.EMAIL_PASSWORD
   }
 
 };
