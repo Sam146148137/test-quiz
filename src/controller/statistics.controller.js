@@ -7,7 +7,7 @@ class StatisticsController {
     try {
       const { id } = req.params;
 
-      const statistic = await StatisticsServices.bestAnswers(id);
+      const statistic = await StatisticsServices.bestAnswers(id, 5);
 
       SuccessHandlerUtil.handleGet(res, next, statistic);
     } catch (error) {

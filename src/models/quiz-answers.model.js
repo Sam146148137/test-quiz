@@ -12,7 +12,7 @@ class QuizAnswersModel extends BaseModel {
       .populate('user');
   }
 
-  bestAnswersById(id) {
+  bestAnswersById(id, top) {
     return this.model
       .aggregate()
       .match({ $expr: { $eq: ['$quizId', { $toObjectId: id }] } })
@@ -31,7 +31,7 @@ class QuizAnswersModel extends BaseModel {
         groupUsers: { $push: '$answerUsers' },
         count: { $sum: 1 }
       })
-      .limit(5);
+      .limit(top);
   }
 }
 
