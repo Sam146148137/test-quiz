@@ -6,7 +6,7 @@ const config = {
   CORS: process.env.CORS?.split(',') || '*',
 
   MONGODB: {
-    URL: process.env.MONGODB_URL || 'mongodb://localhost:27017/test_quiz'
+    URL: process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/test_quiz'
   },
 
   AUTH: {
@@ -17,6 +17,8 @@ const config = {
   },
 
   EMAIL: {
+    HOST: process.env.EMAIL_HOST,
+    PORT: process.env.EMAIL_PORT,
     SERVICE: process.env.EMAIL_SERVICE,
     USERNAME: process.env.EMAIL_USERNAME,
     PASSWORD: process.env.EMAIL_PASSWORD

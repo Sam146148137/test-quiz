@@ -6,10 +6,12 @@ import config from '../config/variables.config';
 
 const { EMAIL } = config;
 const {
-  SERVICE, USERNAME, PASSWORD
+  HOST, PORT, SERVICE, USERNAME, PASSWORD
 } = EMAIL;
 
 const mailer = nodemailer.createTransport({
+  host: HOST,
+  port: PORT,
   service: SERVICE,
   auth: { user: USERNAME, pass: PASSWORD }
 });
