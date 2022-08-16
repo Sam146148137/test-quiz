@@ -3,7 +3,7 @@ import Joi from 'joi';
 import { ID } from './type';
 
 const StatisticsSchema = {
-  getSchema: {
+  bestAnswersSchema: {
     params: Joi.object({ id: ID.required() })
   }
 };

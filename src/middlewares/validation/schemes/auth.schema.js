@@ -4,7 +4,7 @@ import Joi from 'joi';
 const AuthSchema = {
   loginSchema: {
     body: Joi.object({
-      password: Joi.string().min(8).required(),
+      password: Joi.string().min(7).required(),
       email: Joi.string().email().required()
     })
   }

@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/:id',
   AuthMiddlaware.authenticateFor([role.admin]),
-  StatisticsValidationMiddleware.validateGetArgs,
-  StatisticsController.getById);
+  StatisticsValidationMiddleware.bestAnswersArgs,
+  StatisticsController.bestAnswers);
 
 export default router;

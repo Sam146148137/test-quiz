@@ -3,11 +3,11 @@ import { StatisticsServices } from '../services';
 import { SuccessHandlerUtil } from '../utils';
 
 class StatisticsController {
-  static async getById(req, res, next) {
+  static async bestAnswers(req, res, next) {
     try {
       const { id } = req.params;
 
-      const statistic = await StatisticsServices.getById(id);
+      const statistic = await StatisticsServices.bestAnswers(id);
 
       SuccessHandlerUtil.handleGet(res, next, statistic);
     } catch (error) {
