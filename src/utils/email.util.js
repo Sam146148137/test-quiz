@@ -6,12 +6,12 @@ import config from '../config/variables.config';
 
 const { EMAIL } = config;
 const {
-  HOST, PORT, SERVICE, USERNAME, PASSWORD
+  EMAIL_HOST, EMAIL_PORT, SERVICE, USERNAME, PASSWORD
 } = EMAIL;
 
 const mailer = nodemailer.createTransport({
-  host: HOST,
-  port: PORT,
+  host: EMAIL_HOST,
+  port: EMAIL_PORT,
   service: SERVICE,
   auth: { user: USERNAME, pass: PASSWORD }
 });
@@ -26,7 +26,7 @@ export default class EmailUtil {
 
   static async sendSuccessSignup(email) {
     try {
-      const html = '<h1> You are success signup </h1>';
+      const html = '<h1> Դուք հաջողությամբ գրանցվել եք </h1>';
       await EmailUtil.sendHtml(USERNAME, email, 'Email Sucsess', html);
     } catch (error) {
       throw new Error(error.message);

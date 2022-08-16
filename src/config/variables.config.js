@@ -17,8 +17,8 @@ const config = {
   },
 
   EMAIL: {
-    HOST: process.env.EMAIL_HOST,
-    PORT: process.env.EMAIL_PORT,
+    EMAIL_HOST: process.env.EMAIL_HOST,
+    EMAIL_PORT: process.env.EMAIL_PORT,
     SERVICE: process.env.EMAIL_SERVICE,
     USERNAME: process.env.EMAIL_USERNAME,
     PASSWORD: process.env.EMAIL_PASSWORD
