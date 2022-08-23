@@ -7,7 +7,7 @@ const { FACEBOOK } = config;
 passport.use(new FacebookStrategy.Strategy({
   clientID: FACEBOOK.FACEBOOK_CLIENT_ID,
   clientSecret: FACEBOOK.FACEBOOK_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3030/api/v1/auth/facebook/callback',
+  callbackURL: 'https://azgayinjoxov.herokuapp.com/api/v1/auth/facebook/callback',
   profileFields: ['id', 'displayName', 'email', 'name', 'birthday', 'gender']
 },
 ((accessToken, refreshToken, profile, done) => {
