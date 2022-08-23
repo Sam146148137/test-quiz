@@ -13,10 +13,17 @@ router.post('/',
   UsersValidationMiddleware.validateSignupArgs,
   UsersController.signup);
 
+router.get('/facebook', UsersController.facebookSignup);
+
 router.post('/add',
   AuthMiddleware.authenticateFor([role.admin]),
   UsersValidationMiddleware.validateAddArgs,
   UsersController.add);
+
+router.put('/editMyProfile',
+  AuthMiddleware.authenticateFor([role.member]),
+  UsersValidationMiddleware.validateUpdateMyProfileArgs,
+  UsersController.editMyProfile);
 
 router.put('/:id',
   AuthMiddleware.authenticateFor([role.admin]),
@@ -27,6 +34,10 @@ router.get('/',
   AuthMiddleware.authenticateFor([role.admin]),
   UsersValidationMiddleware.validateListArgs,
   UsersController.list);
+
+router.get('/myProfile',
+  AuthMiddleware.authenticateFor([role.member]),
+  UsersController.myProfile);
 
 router.get('/:id',
   AuthMiddleware.authenticateFor([role.admin]),

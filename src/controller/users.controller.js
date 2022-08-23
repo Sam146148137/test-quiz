@@ -1,4 +1,5 @@
 // Local Modules
+import generator from 'generate-password';
 import { UsersServices } from '../services';
 import { SuccessHandlerUtil } from '../utils';
 import { UsersDto } from '../dto';
@@ -7,6 +8,25 @@ export default class UsersController {
   static async signup(req, res, next) {
     try {
       const payload = req.body;
+      const user = await UsersServices.signup(payload);
+      SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async facebookSignup(req, res, next) {
+    try {
+      const payload = {
+        firstName: req.user._json.first_name,
+        lastName: req.user._json.last_name,
+        age: new Date().getFullYear() - req.user._json.birthday.split('/').pop(),
+        email: req.user._json.email,
+        password: generator.generate({
+          length: 10,
+          numbers: true
+        })
+      };
       const user = await UsersServices.signup(payload);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
@@ -64,6 +84,30 @@ export default class UsersController {
       await UsersServices.deleteById(id);
 
       SuccessHandlerUtil.handleUpdate(res, next, { success: true });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async myProfile(req, res, next) {
+    try {
+      const { user } = res.locals.auth;
+
+      const userInfo = await UsersServices.getById(user.userId);
+      SuccessHandlerUtil.handleGet(res, next, UsersDto.formatUserToJson(userInfo));
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async editMyProfile(req, res, next) {
+    try {
+      const { user } = res.locals.auth;
+      const update = req.body;
+
+      const userInfo = await UsersServices.updateById(user.userId, update);
+      // res.clearCookie('userCookie');
+      SuccessHandlerUtil.handleGet(res, next, UsersDto.formatUserToJson(userInfo));
     } catch (error) {
       next(error);
     }

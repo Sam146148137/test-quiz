@@ -42,6 +42,20 @@ const UsersSchema = {
       'role')
   },
 
+  updateMyProfileSchema: {
+    body: Joi.object({
+      firstName: Joi.string().min(1),
+      lastName: Joi.string().min(1),
+      age: Joi.number().min(2),
+      email: Joi.string().email(),
+      password: Joi.string().min(7)
+    }).or('firstName',
+      'lastName',
+      'age',
+      'email',
+      'password')
+  },
+
   listSchema: {
     query: Joi.object({
       limit,

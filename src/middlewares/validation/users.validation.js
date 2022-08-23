@@ -14,6 +14,10 @@ class UsersValidation {
     ValidatorUtil.validateArgs(req, UsersSchema.updateSchema, next);
   }
 
+  static validateUpdateMyProfileArgs(req, res, next) {
+    ValidatorUtil.validateArgs(req, UsersSchema.updateMyProfileSchema, next);
+  }
+
   static validateListArgs(req, res, next) {
     ValidatorUtil.validateArgs(req, UsersSchema.listSchema, next);
   }

@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
+import passport from 'passport';
 
 // Local modules
+import session from 'express-session';
 import config from './config/variables.config';
 import MongodbStorage from './storage/mongodb.storage';
 import ErrorHandlerMiddleware from './middlewares/error-handler.middleware';
@@ -31,6 +33,7 @@ class App {
     this._initCookieParser();
     this._setCors();
     this._setRequestParser();
+    this._facebookGoogle();
     this._initializeApi();
     this._setErrorHandler();
   }
@@ -79,6 +82,17 @@ class App {
     this.app.use(bodyParser.json());
     const options = { limit: '200mb', extended: false };
     this.app.use(bodyParser.urlencoded(options));
+  }
+
+  _facebookGoogle() {
+    this.app.use(session({
+      resave: false,
+      saveUninitialized: true,
+      secret: 'SECRET'
+    }));
+
+    this.app.use(passport.initialize());
+    this.app.use(passport.session());
   }
 
   /**

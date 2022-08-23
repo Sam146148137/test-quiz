@@ -6,7 +6,8 @@ const config = {
   CORS: process.env.CORS?.split(',') || '*',
 
   MONGODB: {
-    URL: process.env.MONGODB_URL || 'mongodb://localhost:27017/test_quiz'
+    URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
+    // URL: 'mongodb://127.0.0.1:27017/test_quiz'
   },
 
   AUTH: {
@@ -20,6 +21,11 @@ const config = {
     SERVICE: process.env.EMAIL_SERVICE,
     USERNAME: process.env.EMAIL_USERNAME,
     PASSWORD: process.env.EMAIL_PASSWORD
+  },
+
+  FACEBOOK: {
+    FACEBOOK_CLIENT_ID: process.env.FACEBOOK_CLIENT_ID,
+    FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET
   }
 
 };
