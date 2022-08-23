@@ -17,10 +17,11 @@ export default class UsersController {
 
   static async facebookSignup(req, res, next) {
     try {
+      console.log(req.user._json, 11111111111111);
       const payload = {
         firstName: req.user._json.first_name,
         lastName: req.user._json.last_name,
-        age: new Date().getFullYear() - req.user._json.birthday.split('/').pop(),
+        // age: new Date().getFullYear() - req.user._json.birthday.split('/').pop(),
         email: req.user._json.email,
         password: generator.generate({
           length: 10,
