@@ -6,8 +6,8 @@ const config = {
   CORS: process.env.CORS?.split(',') || '*',
 
   MONGODB: {
+    // eslint-disable-next-line max-len
     URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
-    // URL: 'mongodb://127.0.0.1:27017/test_quiz'
   },
 
   AUTH: {
@@ -18,6 +18,8 @@ const config = {
   },
 
   EMAIL: {
+    EMAIL_HOST: process.env.EMAIL_HOST,
+    EMAIL_PORT: process.env.EMAIL_PORT,
     SERVICE: process.env.EMAIL_SERVICE,
     USERNAME: process.env.EMAIL_USERNAME,
     PASSWORD: process.env.EMAIL_PASSWORD
@@ -26,6 +28,11 @@ const config = {
   FACEBOOK: {
     FACEBOOK_CLIENT_ID: process.env.FACEBOOK_CLIENT_ID,
     FACEBOOK_CLIENT_SECRET: process.env.FACEBOOK_CLIENT_SECRET
+  },
+
+  GOOGLE: {
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET
   }
 
 };

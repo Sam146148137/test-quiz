@@ -15,6 +15,8 @@ router.post('/',
 
 router.get('/facebook', UsersController.facebookSignup);
 
+router.get('/google', UsersController.signupGoogle);
+
 router.post('/add',
   AuthMiddleware.authenticateFor([role.admin]),
   UsersValidationMiddleware.validateAddArgs,

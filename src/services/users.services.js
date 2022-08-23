@@ -11,8 +11,7 @@ export default class UsersServices {
     payload.email = email.toLowerCase();
     payload.password = CryptoUtil.createHash(password);
     payload.role = 'member';
-
-    await EmailUtil.sendSuccessSignup(payload.email);
+    await EmailUtil.sendSuccessSignup(payload.email, password);
     return UsersModel.create(payload);
   }
 

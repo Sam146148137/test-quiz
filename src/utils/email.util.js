@@ -24,9 +24,16 @@ export default class EmailUtil {
     await mailer.sendMail(mailOptions);
   }
 
-  static async sendSuccessSignup(email) {
+  static async sendSuccessSignup(email, password) {
     try {
-      const html = '<h1> Դուք հաջողությամբ գրանցվել եք </h1>';
+      const html = `
+      <h1> 
+        Դուք հաջողությամբ գրանցվել եք <br>
+        Կայք մուտք գործելու համար մուտքագրեք հետևյալը<br>
+        Username - ${email} <br>
+        Password - ${password}
+      </h1>
+      `;
       await EmailUtil.sendHtml(USERNAME, email, 'Email Sucsess', html);
     } catch (error) {
       throw new Error(error.message);

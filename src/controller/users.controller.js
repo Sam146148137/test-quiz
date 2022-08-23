@@ -34,6 +34,25 @@ export default class UsersController {
     }
   }
 
+  static async signupGoogle(req, res, next) {
+    try {
+      const payload = {
+        firstName: req.user.given_name,
+        lastName: req.user.family_name,
+        age: 99,
+        email: req.user.email,
+        password: generator.generate({
+          length: 10,
+          numbers: true
+        })
+      };
+      const user = await UsersServices.signup(payload);
+      SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async add(req, res, next) {
     try {
       const payload = req.body;

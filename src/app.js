@@ -82,6 +82,7 @@ class App {
     this.app.use(bodyParser.json());
     const options = { limit: '200mb', extended: false };
     this.app.use(bodyParser.urlencoded(options));
+    this.app.use(express.json());
   }
 
   _facebookGoogle() {
