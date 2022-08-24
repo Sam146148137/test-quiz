@@ -8,7 +8,7 @@ const { ResourceNotFoundError } = ErrorsUtil;
 
 class QuizAnswersServices {
   static async add(payload) {
-    const { quizId, answers } = payload;
+    const { quizId, userId, answers } = payload;
 
     await QuizzesModel.getOneOrFaile(quizId);
 
@@ -24,9 +24,14 @@ class QuizAnswersServices {
     answers.forEach((a) => {
       _.find(questions, (q) => {
         if (a.questionId === q.id) {
+          a.right = false;
           _.find(q.answers, (ans) => {
-            if (a.answer === ans.id && ans.right === true) {
-              score += q.grade;
+            if (ans.right === true) {
+              a.rightAnswer = ans.id;
+              if (a.answer === ans.id) {
+                score += q.grade;
+                a.right = true;
+              }
             }
           });
         }
@@ -34,8 +39,13 @@ class QuizAnswersServices {
       questionIds.push(a.questionId);
     });
 
+    payload.answers = answers;
     payload.questionIds = questionIds;
     payload.score = score;
+
+    // if user already answered in this quiz, it will not save in db, but return response to user
+    const existAnswer = await QuizAnswersModel.getByIdAndUserId(quizId, userId);
+    if (existAnswer) return payload;
 
     return QuizAnswersModel.create(payload);
   }

@@ -12,6 +12,10 @@ class QuizAnswersModel extends BaseModel {
       .populate('user');
   }
 
+  getByIdAndUserId(quizId, userId) {
+    return this.model.findOne({ quizId, userId });
+  }
+
   bestAnswersById(id, top) {
     return this.model
       .aggregate()

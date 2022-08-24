@@ -12,6 +12,8 @@ router.post('/login',
   AuthValidationMiddleware.validateLoginArgs,
   AuthController.login);
 
+router.post('/refresh', AuthController.refresh);
+
 router.get('/facebook', passportFacebook.authenticate('facebook', {
   scope: ['public_profile', 'email']
 }));
