@@ -20,12 +20,12 @@ router.put('/:id',
   QuizzesController.updateById);
 
 router.get('/:id',
-  AuthMiddlaware.authenticateFor([role.admin]),
+  AuthMiddlaware.authenticateFor([role.admin, role.member]),
   QuizzesvalidationMiddleware.validateGetArgs,
   QuizzesController.getById);
 
 router.get('/',
-  AuthMiddlaware.authenticateFor([role.admin]),
+  AuthMiddlaware.authenticateFor([role.admin, role.member]),
   QuizzesvalidationMiddleware.validateListArgs,
   QuizzesController.list);
 
