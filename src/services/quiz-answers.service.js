@@ -26,9 +26,12 @@ class QuizAnswersServices {
         if (a.questionId === q.id) {
           a.right = false;
           _.find(q.answers, (ans) => {
-            if (a.answer === ans.id && ans.right === true) {
-              score += q.grade;
-              a.right = true;
+            if (ans.right === true) {
+              a.rightAnswer = ans.id;
+              if (a.answer === ans.id) {
+                score += q.grade;
+                a.right = true;
+              }
             }
           });
         }
