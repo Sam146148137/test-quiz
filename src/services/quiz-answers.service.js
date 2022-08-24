@@ -24,9 +24,11 @@ class QuizAnswersServices {
     answers.forEach((a) => {
       _.find(questions, (q) => {
         if (a.questionId === q.id) {
+          a.right = false;
           _.find(q.answers, (ans) => {
             if (a.answer === ans.id && ans.right === true) {
               score += q.grade;
+              a.right = true;
             }
           });
         }
@@ -34,6 +36,7 @@ class QuizAnswersServices {
       questionIds.push(a.questionId);
     });
 
+    payload.answers = answers;
     payload.questionIds = questionIds;
     payload.score = score;
 
