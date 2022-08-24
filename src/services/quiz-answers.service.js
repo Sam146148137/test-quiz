@@ -8,7 +8,7 @@ const { ResourceNotFoundError } = ErrorsUtil;
 
 class QuizAnswersServices {
   static async add(payload) {
-    const { quizId, answers } = payload;
+    const { quizId, userId, answers } = payload;
 
     await QuizzesModel.getOneOrFaile(quizId);
 
@@ -39,6 +39,10 @@ class QuizAnswersServices {
     payload.answers = answers;
     payload.questionIds = questionIds;
     payload.score = score;
+
+    // if user already answered in this quiz, it will not save in db, but return response to user
+    const existAnswer = await QuizAnswersModel.getByIdAndUserId(quizId, userId);
+    if (existAnswer) return payload;
 
     return QuizAnswersModel.create(payload);
   }
