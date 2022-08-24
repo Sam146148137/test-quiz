@@ -1,16 +1,16 @@
 {
 	"info": {
-		"_postman_id": "23f3938f-3ae0-4fbf-ab18-e4447cd50783",
+		"_postman_id": "fe31d724-d42d-4835-99a8-4bee82f08f6a",
 		"name": "Test-quiz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "21973784"
+		"_exporter_id": "14487765"
 	},
 	"item": [
 		{
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Login Admin",
+					"name": "Login",
 					"event": [
 						{
 							"listen": "test",
@@ -27,20 +27,13 @@
 					],
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{AdminToken}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"paul@gmail.com\",\n    \"password\": \"mccartney79\"\n}",
+							"raw": "{\n    \"email\": \"zaqaryan.sam@gmail.com\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -48,15 +41,23 @@
 							}
 						},
 						"url": {
-							"raw": "{{local}}/auth/login",
+							"raw": "{{host}}/auth/login",
 							"host": [
-								"{{local}}"
+								"{{host}}"
 							],
 							"path": [
 								"auth",
 								"login"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "GET",
+						"header": []
 					},
 					"response": []
 				}
@@ -82,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"paul\",\n    \"lastName\": \"mccartney\",\n    \"age\": 79,\n    \"email\": \"paul7@gmail.com\",\n    \"password\": \"mccartney79\"\n    \n}",
+							"raw": "{\n    \"firstName\": \"Sam\",\n    \"lastName\": \"Zaqaryan\",\n    \"age\": 22,\n    \"email\": \"zaqaryan.sam@gmail.com\",\n    \"password\": \"password\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,6 +97,262 @@
 							],
 							"path": [
 								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"seroj\",\n    \"lastName\": \"tankyan\",\n    \"age\": 21,\n    \"email\": \"seroj.tankyan@gmail.com\",\n    \"password\": \"tankyan1978\",\n    \"role\": \"member\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/add",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"serj\",\n    \"lastName\": \"tankyan\",\n    \"age\": 50,\n    \"email\": \"serj.tankyan@gmail.com\",\n    \"password\": \"serj1988\",\n    \"role\": \"member\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/62f228e28c0cbf4d9ff2a812",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"62f228e28c0cbf4d9ff2a812"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/63046ca5719db111c91bae83",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"63046ca5719db111c91bae83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"karmen\",\n    \"lastName\": \"varsikyan\",\n    \"age\": 23,\n    \"email\": \"karin.varsikyan@gmail.com\",\n    \"password\": \"namusunes\",\n    \"role\": \"member\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/62f21291f472337043ee9769",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"62f21291f472337043ee9769"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member Get My Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users/myProfile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"myProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Member Edit My Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/users/editMyProfile",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"editMyProfile"
 							]
 						}
 					},
@@ -126,7 +383,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"Հարց առաջին\",\n    \"text\": \"քանի պատգամավոր կան ազգային ժողովում\",\n    \"answers\": [\n        {\n            \"title\":\"կան 131\",\n            \"right\": true \n        },\n\n        {\n            \"title\":\"կան 100\",\n            \"right\": false \n        }\n        \n        \n    ],\n    \"grade\": \"9\"\n}",
+							"raw": "{\n    \"title\":\"Հարց Առաջին\",\n    \"text\": \"քանի պատգամավոր կա ազգային ժողովում\",\n    \"answers\": [\n        {\n            \"title\":\"կան 131\",\n            \"right\": true \n        },\n\n        {\n            \"title\":\"կան 100\",\n            \"right\": false \n        }\n    ],\n    \"grade\": \"9\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,9 +391,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{local}}/questions/",
+							"raw": "{{host}}/questions/",
 							"host": [
-								"{{local}}"
+								"{{host}}"
 							],
 							"path": [
 								"questions",
@@ -199,13 +456,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{local}}/questions/62f3787ccc286ade29bb1653",
+							"raw": "{{host}}/questions/62f39c5144c62c5a5fdf5a63",
 							"host": [
-								"{{local}}"
+								"{{host}}"
 							],
 							"path": [
 								"questions",
-								"62f3787ccc286ade29bb1653"
+								"62f39c5144c62c5a5fdf5a63"
 							]
 						}
 					},
@@ -288,7 +545,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Առաջին հարցաշար\",\n    \"questionIds\": [\n        \"62f37671cc286ade29bb164d\",\n        \"62f3787ccc286ade29bb1653\"\n    ],\n    \"description\": \"Ազգանին ժողով\",\n    \"status\": \"active\"\n}",
+							"raw": "{\n    \"title\": \"Առաջին հարցաշար\",\n    \"questionIds\": [\n        \"6303ca67bb3f6ecb585a9cc7\",\n        \"6303ca67bb3f6ecb585a9cbb\",\n        \"6303ca67bb3f6ecb585a9cc3\",\n        \"6303ca67bb3f6ecb585a9cbf\",\n        \"6303ca67bb3f6ecb585a9cb3\"\n    ],\n    \"description\": \"Ազգանին ժողով\",\n    \"status\": \"active\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,13 +607,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/quizzes/62f37b87cc286ade29bb1675",
+							"raw": "{{host}}/quizzes/62f4d530669473ad2b05964f",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"quizzes",
-								"62f37b87cc286ade29bb1675"
+								"62f4d530669473ad2b05964f"
 							]
 						}
 					},
@@ -421,7 +678,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quizId\": \"62f37b87cc286ade29bb1675\",\n    \"answers\": [\n        {\n            \"questionId\": \"62f37671cc286ade29bb164d\",\n            \"answer\": \"62f37671cc286ade29bb164e\"\n        },\n        {\n            \"questionId\": \"62f3787ccc286ade29bb1653\",\n            \"answer\": \"62f379c7cc286ade29bb1665\"\n        }\n    ]\n\n}",
+							"raw": "{\n    \"quizId\": \"6304d360e2472f093b26743e\",\n    \"answers\": [\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd57fa\",\n            \"answer\": \"6303fa11f32a7750c8bd57fb\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd57fe\",\n            \"answer\": \"62f4d4f6669473ad2b05964b\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd5806\",\n            \"answer\": \"62f4d4f6669473ad2b05964b\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd580a\",\n            \"answer\": \"6303fa11f32a7750c8bd580d\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -435,6 +692,39 @@
 							],
 							"path": [
 								"quiz-answers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Statistics",
+			"item": [
+				{
+					"name": "Get Statistics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AdminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/statistics/62f4d530669473ad2b05964f",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"statistics",
+								"62f4d530669473ad2b05964f"
 							]
 						}
 					},
