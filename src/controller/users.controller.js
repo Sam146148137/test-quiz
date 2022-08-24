@@ -1,7 +1,7 @@
 // Local Modules
 import generator from 'generate-password';
 import { UsersServices } from '../services';
-import { SuccessHandlerUtil } from '../utils';
+import { SuccessHandlerUtil, EmailUtil } from '../utils';
 import { UsersDto } from '../dto';
 
 export default class UsersController {
@@ -29,6 +29,7 @@ export default class UsersController {
         })
       };
       const user = await UsersServices.signup(payload);
+      await EmailUtil.sendSuccessSignup(payload.email, payload.password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
       next(error);
@@ -48,6 +49,7 @@ export default class UsersController {
         })
       };
       const user = await UsersServices.signup(payload);
+      await EmailUtil.sendSuccessSignup(payload.email, payload.password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
       next(error);

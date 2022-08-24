@@ -1,5 +1,5 @@
 // Local Modules
-import { CryptoUtil, ErrorsUtil, EmailUtil } from '../utils';
+import { CryptoUtil, ErrorsUtil } from '../utils';
 import { UsersModel } from '../models';
 
 const { ResourceNotFoundError } = ErrorsUtil;
@@ -11,7 +11,6 @@ export default class UsersServices {
     payload.email = email.toLowerCase();
     payload.password = CryptoUtil.createHash(password);
     payload.role = 'member';
-    await EmailUtil.sendSuccessSignup(payload.email, password);
     return UsersModel.create(payload);
   }
 

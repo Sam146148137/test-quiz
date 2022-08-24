@@ -9,13 +9,13 @@ import role from '../enum/role.enum';
 
 const router = express.Router();
 
-router.post('/',
-  UsersValidationMiddleware.validateSignupArgs,
-  UsersController.signup);
-
 router.get('/facebook', UsersController.facebookSignup);
 
 router.get('/google', UsersController.signupGoogle);
+
+router.post('/',
+  UsersValidationMiddleware.validateSignupArgs,
+  UsersController.signup);
 
 router.post('/add',
   AuthMiddleware.authenticateFor([role.admin]),
