@@ -25,7 +25,6 @@ router.get('/:id',
   QuizzesController.getById);
 
 router.get('/',
-  AuthMiddlaware.authenticateFor([role.admin, role.member]),
   QuizzesvalidationMiddleware.validateListArgs,
   QuizzesController.list);
 
