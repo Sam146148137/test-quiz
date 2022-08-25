@@ -4,7 +4,8 @@ class UsersDto {
       firstName: user.firstName,
       lastName: user.lastName,
       age: user.age,
-      email: user.firstName
+      gender: user.gender,
+      email: user.email
     };
   }
 }

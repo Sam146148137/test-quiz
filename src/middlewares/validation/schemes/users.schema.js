@@ -8,8 +8,8 @@ const UsersSchema = {
     body: Joi.object({
       firstName: Joi.string().min(1).required(),
       lastName: Joi.string().min(1).required(),
-      gender: Joi.string().valid('male', 'female', 'other').optional(),
-      age: Joi.number().min(7).max(99).optional(),
+      gender: Joi.string().valid('male', 'female', 'other').required(),
+      age: Joi.number().required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required()
     })
