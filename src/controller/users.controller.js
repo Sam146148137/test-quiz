@@ -9,6 +9,7 @@ export default class UsersController {
     try {
       const payload = req.body;
       const user = await UsersServices.signup(payload);
+      await EmailUtil.sendSuccessSignup(payload.email, req.body.password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
       next(error);
@@ -26,8 +27,11 @@ export default class UsersController {
           numbers: true
         })
       };
+
+      const { password } = payload;
+
       const user = await UsersServices.signup(payload);
-      await EmailUtil.sendSuccessSignup(payload.email, payload.password);
+      await EmailUtil.sendSuccessSignup(payload.email, password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
       next(error);
@@ -45,8 +49,11 @@ export default class UsersController {
           numbers: true
         })
       };
+
+      const { password } = payload;
+
       const user = await UsersServices.signup(payload);
-      await EmailUtil.sendSuccessSignup(payload.email, payload.password);
+      await EmailUtil.sendSuccessSignup(payload.email, password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
     } catch (error) {
       next(error);
