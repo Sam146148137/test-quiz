@@ -6,6 +6,7 @@ import mongooseIdValidator from 'mongoose-id-validator';
 
 // Local Modules
 import role from '../../enum/role.enum';
+import gender from '../../enum/gender.enum';
 
 const defaultHidden = {
   index: true,
@@ -20,7 +21,8 @@ const hiddenSchema = mongooseHidden({ defaultHidden });
 const UsersSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  age: { type: Number },
+  age: { type: Number, default: 'not selected' },
+  gender: { type: String, enum: Object.values(gender), default: gender.notSelected },
   role: { type: String, enum: Object.values(role), default: role.member },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true }

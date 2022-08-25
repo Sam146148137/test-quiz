@@ -20,7 +20,6 @@ export default class UsersController {
       const payload = {
         firstName: req.user._json.first_name,
         lastName: req.user._json.last_name,
-        age: 18,
         email: req.user._json.email,
         password: generator.generate({
           length: 10,
@@ -40,7 +39,6 @@ export default class UsersController {
       const payload = {
         firstName: req.user.given_name,
         lastName: req.user.family_name,
-        age: 20,
         email: req.user.email,
         password: generator.generate({
           length: 10,
