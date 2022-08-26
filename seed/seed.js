@@ -35,7 +35,7 @@ const seed = async () => {
   console.log('Successfully connected!');
 
   try {
-    await insertUsers();
+    // await insertUsers();
     await insertQuestions();
     console.log('Data is inserted ...');
   } catch (error) {

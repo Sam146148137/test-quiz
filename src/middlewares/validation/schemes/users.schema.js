@@ -11,7 +11,8 @@ const UsersSchema = {
       gender: Joi.string().valid('male', 'female', 'other').required(),
       age: Joi.number().integer().min(12).max(99).required(),
       email: Joi.string().email().required(),
-      password: Joi.string().min(7).required()
+      password: Joi.string().min(7).required(),
+      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/).required()
     })
   },
 
