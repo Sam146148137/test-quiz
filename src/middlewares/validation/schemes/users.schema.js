@@ -53,19 +53,15 @@ const UsersSchema = {
 
   updateMyProfileSchema: {
     body: Joi.object({
-      // firstName: Joi.string().min(1),
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
       phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/),
       email: Joi.string().email()
-      // password: Joi.string().min(7)
     }).or(
-      // 'firstName',
       'lastName',
       'age',
       'phone',
       'email'
-      // 'password'
     )
   },
 
