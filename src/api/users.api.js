@@ -9,6 +9,10 @@ import role from '../enum/role.enum';
 
 const router = express.Router();
 
+router.post('/email',
+  UsersValidationMiddleware.validateArg,
+  UsersController.emailExist);
+
 router.get('/facebook', UsersController.facebookSignup);
 
 router.get('/google', UsersController.signupGoogle);

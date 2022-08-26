@@ -15,6 +15,12 @@ const UsersSchema = {
     })
   },
 
+  emailSchema: {
+    body: Joi.object({
+      email: Joi.string().email().required()
+    })
+  },
+
   addSchema: {
     body: Joi.object({
       firstName: Joi.string().min(1).required(),

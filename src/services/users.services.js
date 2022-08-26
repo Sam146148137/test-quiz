@@ -5,6 +5,10 @@ import { UsersModel } from '../models';
 const { ResourceNotFoundError } = ErrorsUtil;
 
 export default class UsersServices {
+  static emailExist(email) {
+    return UsersModel.findByEmail(email);
+  }
+
   static async signup(payload) {
     const { password, email } = payload;
 

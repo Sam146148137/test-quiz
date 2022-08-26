@@ -14,7 +14,7 @@ const {
   ACCESS_TOKEN_ACTIVE_TIME
 } = AUTH;
 
-const { ResourceNotFoundError, UnauthorizedError } = ErrorsUtil;
+const { Forbidden, UnauthorizedError } = ErrorsUtil;
 
 export default class AuthService {
   static generateTokens(payload) {
@@ -66,7 +66,7 @@ export default class AuthService {
   static async login(email, password) {
     const user = await UsersModel.findByEmail(email);
 
-    if (!user) throw new ResourceNotFoundError(`User not exists with email: ${email}`);
+    if (!user) throw new Forbidden(`User not exists with email: ${email}`);
     if (!CryptoUtil.isValidPassword(password, user.password)) {
       throw new UnauthorizedError('Invalid password');
     }

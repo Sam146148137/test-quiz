@@ -16,6 +16,20 @@ export default class UsersController {
     }
   }
 
+  static async emailExist(req, res, next) {
+    try {
+      const { email } = req.body;
+      const user = await UsersServices.emailExist(email);
+      let exist = false;
+      if (user) {
+        exist = true;
+      }
+      SuccessHandlerUtil.handleGet(res, next, { exist });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async facebookSignup(req, res, next) {
     try {
       const payload = {
