@@ -27,6 +27,7 @@ const UsersSchema = {
       firstName: Joi.string().min(1).required(),
       lastName: Joi.string().min(1).required(),
       age: Joi.number().min(2).required(),
+      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required(),
       role: Joi.string().valid(...Object.values(role)).required()
@@ -52,16 +53,20 @@ const UsersSchema = {
 
   updateMyProfileSchema: {
     body: Joi.object({
-      firstName: Joi.string().min(1),
+      // firstName: Joi.string().min(1),
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
-      email: Joi.string().email(),
-      password: Joi.string().min(7)
-    }).or('firstName',
+      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/).required(),
+      email: Joi.string().email()
+      // password: Joi.string().min(7)
+    }).or(
+      // 'firstName',
       'lastName',
       'age',
-      'email',
-      'password')
+      'phone',
+      'email'
+      // 'password'
+    )
   },
 
   listSchema: {

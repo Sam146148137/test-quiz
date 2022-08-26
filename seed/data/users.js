@@ -6,6 +6,7 @@ const user = {
   lastName: 'admin',
   age: 100,
   role: 'admin',
+  phone: '+37477620493',
   email: 'admin@gmail.com',
   password: CryptoUtil.createHash('admin123$')
 };
