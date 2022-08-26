@@ -8,6 +8,7 @@ const config = {
   MONGODB: {
     // eslint-disable-next-line max-len
     URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
+    // URL: 'mongodb://localhost:27017'
   },
 
   AUTH: {

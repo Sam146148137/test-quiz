@@ -21,7 +21,9 @@ const hiddenSchema = mongooseHidden({ defaultHidden });
 const UsersSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  age: { type: Number, required: true, default: 11 },
+  age: {
+    type: Number, required: true, min: 12, max: 99, default: 12
+  },
   gender: { type: String, enum: Object.values(gender), default: gender.notSelected },
   role: { type: String, enum: Object.values(role), default: role.member },
   email: { type: String, unique: true, required: true },
