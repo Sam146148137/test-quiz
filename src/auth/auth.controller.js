@@ -32,6 +32,7 @@ export default class AuthController {
     try {
       const { refreshToken } = req.body;
 
+      console.log(777);
       const refreshResult = await AuthService.refresh(refreshToken);
 
       SuccessHandlerUtil.handleAdd(res, next, refreshResult);
