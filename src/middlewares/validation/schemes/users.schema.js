@@ -9,10 +9,12 @@ const UsersSchema = {
       firstName: Joi.string().min(1).required(),
       lastName: Joi.string().min(1).required(),
       gender: Joi.string().valid('male', 'female', 'other').required(),
-      age: Joi.number().integer().min(12).max(99).required(),
+      age: Joi.number().required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required(),
-      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/).required()
+      activationCode: Joi.string().min(6).max(6),
+      phone: Joi.string().trim().min(12).max(12)
+        .pattern(/^\+374\d+$/)
     })
   },
 
@@ -22,12 +24,19 @@ const UsersSchema = {
     })
   },
 
+  changePassSchema: {
+    body: Joi.object({
+      email: Joi.string().email().required(),
+      password: Joi.string().min(7).required(),
+      activationCode: Joi.string().min(6).max(6)
+    })
+  },
+
   addSchema: {
     body: Joi.object({
       firstName: Joi.string().min(1).required(),
       lastName: Joi.string().min(1).required(),
       age: Joi.number().min(2).required(),
-      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required(),
       role: Joi.string().valid(...Object.values(role)).required()
@@ -53,16 +62,16 @@ const UsersSchema = {
 
   updateMyProfileSchema: {
     body: Joi.object({
+      firstName: Joi.string().min(1),
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
-      phone: Joi.string().trim().min(12).max(12).pattern(/^\+374\d+$/),
-      email: Joi.string().email()
-    }).or(
+      email: Joi.string().email(),
+      password: Joi.string().min(7)
+    }).or('firstName',
       'lastName',
       'age',
-      'phone',
-      'email'
-    )
+      'email',
+      'password')
   },
 
   listSchema: {

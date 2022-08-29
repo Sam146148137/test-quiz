@@ -12,6 +12,7 @@ const defaultHidden = {
   index: true,
   __v: true,
   password: true,
+  activationCode: true,
   createdAt: true,
   updatedAt: true
 };
@@ -21,12 +22,15 @@ const hiddenSchema = mongooseHidden({ defaultHidden });
 const UsersSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  age: { type: Number, required: true, min: 12, max: 99, default: 12 },
+  age: {
+    type: Number, required: true, min: 12, max: 99, default: 12
+  },
   gender: { type: String, enum: Object.values(gender), default: gender.notSelected },
-  phone: { type: String, required: true },
   role: { type: String, enum: Object.values(role), default: role.member },
+  phone: { type: String, required: true },
   email: { type: String, unique: true, required: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  activationCode: { type: String, min: 6, max: 6 }
 }, { timestamps: true, toObject: true, toJSON: true });
 
 UsersSchema.plugin(hiddenSchema);

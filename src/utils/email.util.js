@@ -24,9 +24,8 @@ export default class EmailUtil {
     await mailer.sendMail(mailOptions);
   }
 
-  static async sendSuccessSignup(email, password) {
-    try {
-      const html = `
+  static sendSuccessSignup(email, password) {
+    const html = `
       <h1> 
         Դուք հաջողությամբ գրանցվել եք <br>
         Կայք մուտք գործելու համար մուտքագրեք հետևյալը<br>
@@ -34,9 +33,18 @@ export default class EmailUtil {
         Password - ${password}
       </h1>
       `;
-      await EmailUtil.sendHtml(USERNAME, email, 'Email Sucsess', html);
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    EmailUtil.sendHtml(USERNAME, email, 'Email Sucsess', html);
+  }
+
+  static sendActivationCode(email, activationCode) {
+    const html = `
+      <h1> 
+         <br>
+         Գաղտնաբառը փոխելու համար մուտքագրեք <br>
+         հետևյալ կոդը մուտքագրման դաշտում <br>
+         Ակտիվացման կոդ - ${activationCode}
+      </h1>
+      `;
+    EmailUtil.sendHtml(USERNAME, email, '', html);
   }
 }

@@ -7,10 +7,32 @@ import { UsersDto } from '../dto';
 export default class UsersController {
   static async signup(req, res, next) {
     try {
+      const { password } = req.body;
       const payload = req.body;
       const user = await UsersServices.signup(payload);
-      await EmailUtil.sendSuccessSignup(payload.email, req.body.password);
+      await EmailUtil.sendSuccessSignup(payload.email, password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async changePassword(req, res, next) {
+    try {
+      const { email, password, activationCode } = req.body;
+      const user = await UsersServices.changePassword(email, password, activationCode);
+      SuccessHandlerUtil.handleUpdate(res, next, user);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async forgotPassword(req, res, next) {
+    try {
+      const { email } = req.body;
+      const activationCode = await UsersServices.forgotPassword(email);
+      await EmailUtil.sendActivationCode(email, activationCode);
+      SuccessHandlerUtil.handleGet(res, next, { success: true });
     } catch (error) {
       next(error);
     }

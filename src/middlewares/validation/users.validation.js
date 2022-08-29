@@ -10,6 +10,10 @@ class UsersValidation {
     ValidatorUtil.validateArgs(req, UsersSchema.emailSchema, next);
   }
 
+  static validateActivationArgs(req, res, next) {
+    ValidatorUtil.validateArgs(req, UsersSchema.changePassSchema, next);
+  }
+
   static validateAddArgs(req, res, next) {
     ValidatorUtil.validateArgs(req, UsersSchema.addSchema, next);
   }

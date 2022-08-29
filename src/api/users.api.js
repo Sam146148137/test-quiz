@@ -9,6 +9,14 @@ import role from '../enum/role.enum';
 
 const router = express.Router();
 
+router.post('/newPassword',
+  UsersValidationMiddleware.validateActivationArgs,
+  UsersController.changePassword);
+
+router.post('/forgotPassword',
+  UsersValidationMiddleware.validateArg,
+  UsersController.forgotPassword);
+
 router.post('/email',
   UsersValidationMiddleware.validateArg,
   UsersController.emailExist);

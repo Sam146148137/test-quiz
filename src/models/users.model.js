@@ -13,6 +13,16 @@ class UsersModel extends BaseModel {
   list(limit, offset) {
     return this.model.find({}).skip(offset).limit(limit);
   }
+
+  changePassword(email, password, activationCode) {
+    return this.model.findOneAndUpdate({ email, activationCode },
+      {
+        password
+      },
+      {
+        new: true
+      });
+  }
 }
 
 const model = mongoose.model('Users', UsersSchema);
