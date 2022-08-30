@@ -21,6 +21,12 @@ class BaseModel {
     return this.model.findOneAndUpdate(query, update, options);
   }
 
+  updateByQuizIdUserId(_id, update) {
+    const query = { _id };
+    const options = { runValidators: true, new: true, upsert: true }; // upsert: true
+    return this.model.findOneAndUpdate(query, update, options);
+  }
+
   getById(_id) {
     return this.model.findOne({ _id });
   }

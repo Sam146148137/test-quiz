@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "2d98cc50-3d40-4d0e-9b1b-a1f68c405521",
+		"_postman_id": "c8339e3f-eedd-4120-bcfb-4ba7e5d382ec",
 		"name": "Test-quiz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18588645"
+		"_exporter_id": "14487765"
 	},
 	"item": [
 		{
@@ -781,7 +781,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"quizId\": \"6304d360e2472f093b26743e\",\n    \"answers\": [\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd57fa\",\n            \"answer\": \"6303fa11f32a7750c8bd57fb\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd57fe\",\n            \"answer\": \"62f4d4f6669473ad2b05964b\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd5806\",\n            \"answer\": \"62f4d4f6669473ad2b05964b\"\n        },\n        {\n            \"questionId\": \"6303fa11f32a7750c8bd580a\",\n            \"answer\": \"6303fa11f32a7750c8bd580d\"\n        }\n    ]\n}",
+							"raw": "{\n    \"quizId\": \"630888f069003f034f741eaf\",\n    \"answers\": [\n        {\n            \"questionId\": \"63088823edfa26f631f66253\",\n            \"answer\": \"63088823edfa26f631f66254\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66257\",\n            \"answer\": \"63088823edfa26f631f66258\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66243\",\n            \"answer\": \"63088823edfa26f631f66244\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66247\",\n            \"answer\": \"63088823edfa26f631f6624a\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6625b\",\n            \"answer\": \"63088823edfa26f631f6625d\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6624b\",\n            \"answer\": \"63088823edfa26f631f6624c\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66273\",\n            \"answer\": \"63088823edfa26f631f66275\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6625f\",\n            \"answer\": \"63088823edfa26f631f66261\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66263\",\n            \"answer\": \"63088823edfa26f631f66264\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66277\",\n            \"answer\": \"63088823edfa26f631f6627a\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f66267\",\n            \"answer\": \"63088823edfa26f631f66268\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6627b\",\n            \"answer\": \"63088823edfa26f631f6627e\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6626b\",\n            \"answer\": \"63088823edfa26f631f6626e\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6626f\",\n            \"answer\": \"63088823edfa26f631f66271\"\n        },\n        {\n            \"questionId\": \"63088823edfa26f631f6624f\",\n            \"answer\": \"63088823edfa26f631f66252\"\n        }\n\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
