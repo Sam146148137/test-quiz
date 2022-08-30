@@ -42,23 +42,23 @@ class QuizAnswersServices {
     payload.answers = answers;
     payload.questionIds = questionIds;
     payload.score = score;
-    payload.count = 1;
+    // payload.count = 1;
 
     // if user already answered in this quiz, it will not save in db, but return response to user
     const existAnswer = await QuizAnswersModel.getByIdAndUserId(quizId, userId);
 
-    if (existAnswer) {
-      if (existAnswer.count === 2) {
-        if (existAnswer.updatedAt.getFullYear() === new Date().getFullYear()
-        && existAnswer.updatedAt.getMonth() === new Date().getMonth()) {
-          return payload;
-        }
-      } else {
-        payload.count = 2;
-      }
-    }
+    // if (existAnswer) {
+    //   if (existAnswer.count === 2) {
+    //     if (existAnswer.updatedAt.getFullYear() === new Date().getFullYear()
+    //     && existAnswer.updatedAt.getMonth() === new Date().getMonth()) {
+    //       return payload;
+    //     }
+    //   } else {
+    //     payload.count = 2;
+    //   }
+    // }
 
-    // if (existAnswer) return payload;
+    if (existAnswer) return payload;
 
     // return  updatByQuizIdUserId
     return QuizAnswersModel.create(payload);
