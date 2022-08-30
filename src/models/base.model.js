@@ -17,7 +17,7 @@ class BaseModel {
 
   updateById(_id, update) {
     const query = { _id };
-    const options = { runValidators: true, useFindAndModify: false, new: true }; // upsert: true
+    const options = { runValidators: true, useFindAndModify: false, new: true };
     return this.model.findOneAndUpdate(query, update, options);
   }
 
