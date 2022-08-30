@@ -3,11 +3,19 @@ import generator from 'generate-password';
 import { CryptoUtil, ErrorsUtil } from '../utils';
 import { UsersModel } from '../models';
 
-const { ResourceNotFoundError, Forbidden } = ErrorsUtil;
+const { ResourceNotFoundError, Forbidden, InputValidationError } = ErrorsUtil;
 
 export default class UsersServices {
   static emailExist(email) {
     return UsersModel.findByEmail(email);
+  }
+
+  static async activationCode(activCode) {
+    const userInfo = await UsersModel.findByActivationCode(activCode);
+    if (!userInfo) {
+      throw new InputValidationError('Activation code failed');
+    }
+    return userInfo;
   }
 
   static async forgotPassword(email) {
@@ -23,10 +31,9 @@ export default class UsersServices {
     return user.activationCode;
   }
 
-  static async changePassword(email, password, activationCode) {
+  static async changePassword(email, password) {
     password = CryptoUtil.createHash(password);
-    const user = await UsersModel.changePassword(email, password, activationCode);
-    return user;
+    return UsersModel.changePassword(email, password);
   }
 
   static async signup(payload) {

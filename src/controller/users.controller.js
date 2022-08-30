@@ -3,6 +3,7 @@ import generator from 'generate-password';
 import { UsersServices } from '../services';
 import { SuccessHandlerUtil, EmailUtil } from '../utils';
 import { UsersDto } from '../dto';
+import AuthService from '../auth/auth.service';
 
 export default class UsersController {
   static async signup(req, res, next) {
@@ -17,11 +18,12 @@ export default class UsersController {
     }
   }
 
-  static async changePassword(req, res, next) {
+  static async activationCode(req, res, next) {
     try {
-      const { email, password, activationCode } = req.body;
-      const user = await UsersServices.changePassword(email, password, activationCode);
-      SuccessHandlerUtil.handleUpdate(res, next, user);
+      const { activationCode } = req.body;
+      const { email, _id, role } = await UsersServices.activationCode(activationCode);
+      const { accessToken } = AuthService.generateTokens({ email, userId: _id, role });
+      SuccessHandlerUtil.handleAdd(res, next, { accessToken });
     } catch (error) {
       next(error);
     }
@@ -33,6 +35,17 @@ export default class UsersController {
       const activationCode = await UsersServices.forgotPassword(email);
       await EmailUtil.sendActivationCode(email, activationCode);
       SuccessHandlerUtil.handleGet(res, next, { success: true });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async changePassword(req, res, next) {
+    try {
+      const { password } = req.body;
+      const { user } = res.locals.auth;
+      await UsersServices.changePassword(user.email, password);
+      SuccessHandlerUtil.handleUpdate(res, next, { success: true, message: 'Password is updated' });
     } catch (error) {
       next(error);
     }

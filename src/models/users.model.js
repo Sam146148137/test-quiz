@@ -10,12 +10,16 @@ class UsersModel extends BaseModel {
     return this.model.findOne({ email });
   }
 
+  findByActivationCode(activationCode) {
+    return this.model.findOne({ activationCode });
+  }
+
   list(limit, offset) {
     return this.model.find({}).skip(offset).limit(limit);
   }
 
-  changePassword(email, password, activationCode) {
-    return this.model.findOneAndUpdate({ email, activationCode },
+  changePassword(email, password) {
+    return this.model.findOneAndUpdate({ email },
       {
         password
       },

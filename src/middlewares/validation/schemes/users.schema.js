@@ -26,8 +26,12 @@ const UsersSchema = {
 
   changePassSchema: {
     body: Joi.object({
-      email: Joi.string().email().required(),
-      password: Joi.string().min(7).required(),
+      password: Joi.string().min(7).required()
+    })
+  },
+
+  activationCodeSchema: {
+    body: Joi.object({
       activationCode: Joi.string().min(6).max(6)
     })
   },

@@ -10,8 +10,12 @@ class UsersValidation {
     ValidatorUtil.validateArgs(req, UsersSchema.emailSchema, next);
   }
 
-  static validateActivationArgs(req, res, next) {
+  static validatePasswordArg(req, res, next) {
     ValidatorUtil.validateArgs(req, UsersSchema.changePassSchema, next);
+  }
+
+  static validateActivationCodeArg(req, res, next) {
+    ValidatorUtil.validateArgs(req, UsersSchema.activationCodeSchema, next);
   }
 
   static validateAddArgs(req, res, next) {
