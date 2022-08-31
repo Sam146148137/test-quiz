@@ -53,12 +53,14 @@ const UsersSchema = {
       firstName: Joi.string().min(1),
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
+      gender: Joi.string().valid('male', 'female', 'other'),
       email: Joi.string().email(),
       password: Joi.string().min(7),
       role: Joi.string().valid(...Object.values(role))
     }).or('firstName',
       'lastName',
       'age',
+      'gender',
       'email',
       'password',
       'role')
