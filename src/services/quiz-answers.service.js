@@ -57,7 +57,8 @@ class QuizAnswersServices {
         payload.count = 2;
       }
     }
-    return QuizAnswersModel.updateByQuizIdUserId(existAnswer.id, payload);
+
+    return QuizAnswersModel.updateByQuizIdUserId(quizId, userId, payload);
   }
 }
 

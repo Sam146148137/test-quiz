@@ -16,6 +16,12 @@ class QuizAnswersModel extends BaseModel {
     return this.model.findOne({ quizId, userId });
   }
 
+  updateByQuizIdUserId(quizId, userId, payload) {
+    const query = { quizId, userId };
+    const options = { runValidators: true, new: true, upsert: true };
+    return this.model.findOneAndUpdate(query, payload, options);
+  }
+
   bestAnswersById(id, top) {
     return this.model
       .aggregate()
