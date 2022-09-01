@@ -72,6 +72,7 @@ const UsersSchema = {
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
       gender: Joi.string().valid('male', 'female', 'other'),
+      password: Joi.string().min(7),
       phone: Joi.string().trim().min(12).max(12)
         .pattern(/^\+374\d+$/),
       email: Joi.string().email()
