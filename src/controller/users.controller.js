@@ -2,7 +2,7 @@
 import generator from 'generate-password';
 import { UsersServices } from '../services';
 import { SuccessHandlerUtil, EmailUtil } from '../utils';
-import { UsersDto } from '../dto';
+import { UsersDto, FilterQuizDto } from '../dto';
 import AuthService from '../auth/auth.service';
 
 export default class UsersController {
@@ -167,9 +167,12 @@ export default class UsersController {
   static async myProfile(req, res, next) {
     try {
       const { user } = res.locals.auth;
-
-      const userInfo = await UsersServices.getById(user.userId);
-      SuccessHandlerUtil.handleGet(res, next, UsersDto.formatUserToJson(userInfo));
+      const existAnswer = await UsersServices.getByUserId(user.userId);
+      console.log(existAnswer, 1111111111);
+      const quizData = FilterQuizDto.filterQuizArray(existAnswer);
+      const userInfo = UsersDto.formatUserToJson(existAnswer[0].user);
+      userInfo.quizData = quizData;
+      SuccessHandlerUtil.handleGet(res, next, userInfo);
     } catch (error) {
       next(error);
     }

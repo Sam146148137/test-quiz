@@ -1,7 +1,7 @@
 // Local Modules
 import generator from 'generate-password';
 import { CryptoUtil, ErrorsUtil } from '../utils';
-import { UsersModel } from '../models';
+import { UsersModel, QuizAnswersModel } from '../models';
 
 const { ResourceNotFoundError, Forbidden, InputValidationError } = ErrorsUtil;
 
@@ -64,6 +64,14 @@ export default class UsersServices {
     if (!user) throw new ResourceNotFoundError();
 
     return user;
+  }
+
+  static async getByUserId(id) {
+    const existQuizData = await QuizAnswersModel.getByUserId(id);
+    if (!existQuizData) throw new ResourceNotFoundError('');
+    if (existQuizData.length === 0) throw new Forbidden('');
+
+    return existQuizData;
   }
 
   static async deleteById(id) {

@@ -16,6 +16,16 @@ class QuizAnswersModel extends BaseModel {
     return this.model.findOne({ quizId, userId });
   }
 
+  getById(_id) {
+    return this.model.find({ userId: _id });
+  }
+
+  getByUserId(userId) {
+    return this.model.find({ userId })
+      .populate('user')
+      .populate('quiz');
+  }
+
   updateByQuizIdUserId(quizId, userId, payload) {
     const query = { quizId, userId };
     const options = { runValidators: true, new: true, upsert: true };
