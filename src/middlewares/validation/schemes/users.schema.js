@@ -71,13 +71,16 @@ const UsersSchema = {
       firstName: Joi.string().min(1),
       lastName: Joi.string().min(1),
       age: Joi.number().min(2),
-      email: Joi.string().email(),
-      password: Joi.string().min(7)
+      gender: Joi.string().valid('male', 'female', 'other'),
+      phone: Joi.string().trim().min(12).max(12)
+        .pattern(/^\+374\d+$/),
+      email: Joi.string().email()
     }).or('firstName',
       'lastName',
       'age',
       'email',
-      'password')
+      'gender',
+      'phone')
   },
 
   listSchema: {

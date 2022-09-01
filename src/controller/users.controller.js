@@ -168,7 +168,6 @@ export default class UsersController {
     try {
       const { user } = res.locals.auth;
       const existAnswer = await UsersServices.getByUserId(user.userId);
-      console.log(existAnswer, 1111111111);
       const quizData = FilterQuizDto.filterQuizArray(existAnswer);
       const userInfo = UsersDto.formatUserToJson(existAnswer[0].user);
       userInfo.quizData = quizData;
