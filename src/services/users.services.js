@@ -1,13 +1,27 @@
 // Local Modules
 import generator from 'generate-password';
 import { CryptoUtil, ErrorsUtil } from '../utils';
-import { UsersModel, QuizAnswersModel } from '../models';
+import { QuizAnswersModel, UsersModel } from '../models';
+import { FilterQuizDto, UsersDto } from '../dto';
 
 const { ResourceNotFoundError, Forbidden, InputValidationError } = ErrorsUtil;
 
 export default class UsersServices {
   static emailExist(email) {
     return UsersModel.findByEmail(email);
+  }
+
+  static async editPasswordInProfile(password, newPassword, email) {
+    const existUser = await UsersModel.findByEmail(email);
+    if (!existUser) throw new ResourceNotFoundError();
+
+    const validPassword = CryptoUtil.isValidPassword(password, existUser.password);
+
+    if (!validPassword) throw new InputValidationError('Invalid Password');
+
+    const hashPassword = CryptoUtil.createHash(newPassword);
+
+    return UsersModel.changePasswordByEmail(email, hashPassword);
   }
 
   static async activationCode(activCode) {
@@ -64,11 +78,17 @@ export default class UsersServices {
   }
 
   static async getByUserId(id) {
+    const userInfo = await UsersModel.getOneOrFaile(id);
     const existQuizData = await QuizAnswersModel.getByUserId(id);
-    if (!existQuizData) throw new ResourceNotFoundError('');
-    if (existQuizData.length === 0) throw new Forbidden('');
 
-    return existQuizData;
+    if (!existQuizData) throw new Forbidden('Quiz is not found');
+
+    if (existQuizData.length === 0) return userInfo;
+
+    const userData = UsersDto.formatUserToJson(userInfo);
+
+    userData.quizData = FilterQuizDto.filterQuizArray(existQuizData);
+    return userData;
   }
 
   static async deleteById(id) {

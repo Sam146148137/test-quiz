@@ -27,6 +27,16 @@ class UsersModel extends BaseModel {
         new: true
       });
   }
+
+  changePasswordByEmail(email, hashPass) {
+    return this.model.findOneAndUpdate({ email },
+      {
+        password: hashPass
+      },
+      {
+        new: true
+      });
+  }
 }
 
 const model = mongoose.model('Users', UsersSchema);

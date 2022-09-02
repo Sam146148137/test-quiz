@@ -30,6 +30,13 @@ const UsersSchema = {
     })
   },
 
+  passwordsSchema: {
+    body: Joi.object({
+      password: Joi.string().min(7).required(),
+      newPassword: Joi.string().min(7).required()
+    })
+  },
+
   activationCodeSchema: {
     body: Joi.object({
       activationCode: Joi.string().min(6).max(6)
@@ -74,7 +81,7 @@ const UsersSchema = {
       email: Joi.string().email(),
       phone: Joi.string().trim().min(12).max(12)
         .pattern(/^\+374\d+$/),
-      gender: Joi.string().valid('male', 'female', 'other').required()
+      gender: Joi.string().valid('male', 'female', 'other')
     }).or('firstName',
       'lastName',
       'age',

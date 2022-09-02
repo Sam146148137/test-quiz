@@ -2,7 +2,7 @@
 import generator from 'generate-password';
 import { UsersServices } from '../services';
 import { SuccessHandlerUtil, EmailUtil } from '../utils';
-import { UsersDto, FilterQuizDto } from '../dto';
+import { UsersDto } from '../dto';
 import AuthService from '../auth/auth.service';
 
 export default class UsersController {
@@ -13,6 +13,18 @@ export default class UsersController {
       const user = await UsersServices.signup(payload);
       await EmailUtil.sendSuccessSignup(payload.email, password);
       SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async editPasswordInProfile(req, res, next) {
+    try {
+      const { user } = res.locals.auth;
+      const { password, newPassword } = req.body;
+
+      await UsersServices.editPasswordInProfile(password, newPassword, user.email);
+      SuccessHandlerUtil.handleAdd(res, next, { success: true });
     } catch (error) {
       next(error);
     }
@@ -167,10 +179,8 @@ export default class UsersController {
   static async myProfile(req, res, next) {
     try {
       const { user } = res.locals.auth;
-      const existAnswer = await UsersServices.getByUserId(user.userId);
-      const quizData = FilterQuizDto.filterQuizArray(existAnswer);
-      const userInfo = UsersDto.formatUserToJson(existAnswer[0].user);
-      userInfo.quizData = quizData;
+      const userInfo = await UsersServices.getByUserId(user.userId);
+
       SuccessHandlerUtil.handleGet(res, next, userInfo);
     } catch (error) {
       next(error);
