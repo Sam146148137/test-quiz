@@ -1,6 +1,8 @@
 // Local Modules
 import { QuizzesServices } from '../services';
-import { SuccessHandlerUtil } from '../utils';
+import { SuccessHandlerUtil, ErrorsUtil } from '../utils';
+
+const { InputValidationError } = ErrorsUtil;
 
 class QuizzesController {
   static async add(req, res, next) {
@@ -8,6 +10,11 @@ class QuizzesController {
       const payload = req.body;
       const { user } = res.locals.auth;
       payload.userId = user.userId;
+
+      const { file } = req;
+      if (file === undefined) throw new InputValidationError('No Images Found...');
+      payload.image = `${file.filename}`;
+
       const quiz = await QuizzesServices.add(payload);
       SuccessHandlerUtil.handleAdd(res, next, quiz);
     } catch (error) {

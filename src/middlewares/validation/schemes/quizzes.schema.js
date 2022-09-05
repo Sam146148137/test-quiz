@@ -13,7 +13,8 @@ const QuizzesScema = {
         .min(1)
         .required(),
       description: Joi.string().min(1).max(255),
-      status: Joi.string().valid(...Object.values(status)).default(status.passive)
+      status: Joi.string().valid(...Object.values(status)).default(status.passive),
+      image: Joi.string()
     })
   },
 

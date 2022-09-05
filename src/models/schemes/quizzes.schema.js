@@ -22,7 +22,8 @@ const QuizzesScema = new mongoose.Schema({
   title: { type: String, required: true },
   questionIds: { type: Array, ref: 'Questions', required: true },
   description: { type: String },
-  status: { type: String, enum: Object.values(status), default: status.passive }
+  status: { type: String, enum: Object.values(status), default: status.passive },
+  image: { type: String, required: true }
 }, { timestamps: true, toObject: { virtuals: true }, toJSON: { virtuals: true } });
 
 QuizzesScema.virtual('user', user);
