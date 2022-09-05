@@ -2,8 +2,6 @@
 import { QuizzesServices } from '../services';
 import { SuccessHandlerUtil, ErrorsUtil } from '../utils';
 
-const { InputValidationError } = ErrorsUtil;
-
 class QuizzesController {
   static async add(req, res, next) {
     try {
@@ -12,7 +10,7 @@ class QuizzesController {
       payload.userId = user.userId;
 
       const { file } = req;
-      if (file === undefined) throw new InputValidationError('No Images Found...');
+      if (file === undefined) throw new ErrorsUtil.InputValidationError('No Images Found...');
       payload.image = `${file.filename}`;
 
       const quiz = await QuizzesServices.add(payload);
