@@ -48,8 +48,9 @@ class QuizzesController {
   static async getById(req, res, next) {
     try {
       const { id } = req.params;
+      const { userId } = res.locals.auth.user;
 
-      const quiz = await QuizzesServices.getById(id);
+      const quiz = await QuizzesServices.getById(id, userId);
       SuccessHandlerUtil.handleGet(res, next, quiz);
     } catch (error) {
       next(error);

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c8339e3f-eedd-4120-bcfb-4ba7e5d382ec",
+		"_postman_id": "fb07c3ee-a9d5-49d5-b96b-4b714716355f",
 		"name": "Test-quiz",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14487765"
@@ -341,7 +341,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"age\": 22\n}",
+							"raw": "{\n    \"firstName\": \"Narek\",\n    \"lastName\": \"Petrosyan\",\n    \"age\": 26,\n    \"phone\": \"+37494691515\",\n    \"gender\": \"male\",\n    \"email\": \"nr.petrosyan96@gmail.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -647,20 +647,51 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"Առաջին հարցաշար\",\n    \"questionIds\": [\n        \"6303ca67bb3f6ecb585a9cc7\",\n        \"6303ca67bb3f6ecb585a9cbb\",\n        \"6303ca67bb3f6ecb585a9cc3\",\n        \"6303ca67bb3f6ecb585a9cbf\",\n        \"6303ca67bb3f6ecb585a9cb3\"\n    ],\n    \"description\": \"Ազգանին ժողով\",\n    \"status\": \"active\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/sam/Downloads/mountain.jpg"
+								},
+								{
+									"key": "title",
+									"value": "Թեստային հարցաշար ",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Թեստային Առաջին հարցաշարշ",
+									"type": "text"
+								},
+								{
+									"key": "questionIds",
+									"value": "63088823edfa26f631f66253",
+									"type": "text"
+								},
+								{
+									"key": "questionIds",
+									"value": "63088823edfa26f631f66267",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "active",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "{{host}}/quizzes",
+							"raw": "https://test-quize-google.herokuapp.com/api/v1/quizzes",
+							"protocol": "https",
 							"host": [
-								"{{host}}"
+								"test-quize-google",
+								"herokuapp",
+								"com"
 							],
 							"path": [
+								"api",
+								"v1",
 								"quizzes"
 							]
 						}
@@ -710,13 +741,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/quizzes/62f4d530669473ad2b05964f",
+							"raw": "{{host}}/quizzes/630888f069003f034f741eaf",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"quizzes",
-								"62f4d530669473ad2b05964f"
+								"630888f069003f034f741eaf"
 							]
 						}
 					},
@@ -821,13 +852,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/statistics/62f4d530669473ad2b05964f",
+							"raw": "{{host}}/statistics/630888f069003f034f741eaf",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"statistics",
-								"62f4d530669473ad2b05964f"
+								"630888f069003f034f741eaf"
 							]
 						}
 					},
