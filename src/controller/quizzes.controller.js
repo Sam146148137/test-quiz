@@ -51,7 +51,7 @@ class QuizzesController {
       const { userId } = res.locals.auth.user;
 
       const quiz = await QuizzesServices.getById(id, userId);
-      if (quiz.success === false) {
+      if (quiz?.success === false) {
         SuccessHandlerUtil._sendResponse(res, 400, {
           message: 'You have already answered the quiz twice this month'
         });

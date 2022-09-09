@@ -23,8 +23,8 @@ class App {
    */
   constructor() {
     this.app = express();
-    console.log('static file location==========>', path.join(__dirname, 'uploadImage'));
-    this.app.use(express.static(path.join(__dirname, 'uploadImage')));
+    // this.app.use(express.static(path.join(__dirname, 'uploadImage')));
+    this.app.use(express.static('uploadImage'));
   }
 
   /**
