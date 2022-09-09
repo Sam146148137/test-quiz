@@ -51,6 +51,7 @@ class QuizAnswersServices {
         if (existAnswer.updatedAt.getFullYear() === new Date().getFullYear()
         && existAnswer.updatedAt.getMonth() === new Date().getMonth()) {
           payload.count = existAnswer.count;
+          payload.success = false;
           return payload;
         }
       } else {

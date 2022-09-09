@@ -1,8 +1,5 @@
 // Local Modules
 import { QuizAnswersModel, QuizzesModel } from '../models';
-import { ErrorsUtil } from '../utils';
-
-// const { ResourceNotFoundError } = ErrorsUtil;
 
 class QuizzesServices {
   static add(payload) {
@@ -17,8 +14,12 @@ class QuizzesServices {
 
   static async getById(id, userId) {
     const quizAnswer = await QuizAnswersModel.getByIdAndUserId(id, userId);
-    if (quizAnswer.count === 2) {
-      throw new ErrorsUtil.PermissionError('You have already answered the quiz twice this month');
+    if (quizAnswer?.count === 2) {
+      if (quizAnswer.updatedAt.getFullYear() === new Date().getFullYear()
+        && quizAnswer.updatedAt.getMonth() === new Date().getMonth()) {
+        quizAnswer.success = false;
+        return quizAnswer;
+      }
     }
     return QuizzesModel.getDetailedById(id);
   }

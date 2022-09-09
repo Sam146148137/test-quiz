@@ -9,7 +9,13 @@ class QuizAnswersController {
       const { user } = res.locals.auth;
       payload.userId = user.userId;
       const question = await QuizAnswersServices.add(payload);
-      SuccessHandlerUtil.handleAdd(res, next, question);
+      if (question.success === false) {
+        SuccessHandlerUtil._sendResponse(res, 400, {
+          message: 'You have already answered the quiz twice this month'
+        });
+      } else {
+        SuccessHandlerUtil.handleGet(res, next, question);
+      }
     } catch (error) {
       next(error);
     }

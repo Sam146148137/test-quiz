@@ -27,8 +27,8 @@ class QuizzesController {
       const { userId } = res.locals.auth.user;
       update.userId = userId;
 
-      const quizze = await QuizzesServices.updateById(id, update);
-      SuccessHandlerUtil.handleUpdate(res, next, quizze);
+      const quiz = await QuizzesServices.updateById(id, update);
+      SuccessHandlerUtil.handleUpdate(res, next, quiz);
     } catch (error) {
       next(error);
     }
@@ -51,7 +51,13 @@ class QuizzesController {
       const { userId } = res.locals.auth.user;
 
       const quiz = await QuizzesServices.getById(id, userId);
-      SuccessHandlerUtil.handleGet(res, next, quiz);
+      if (quiz.success === false) {
+        SuccessHandlerUtil._sendResponse(res, 400, {
+          message: 'You have already answered the quiz twice this month'
+        });
+      } else {
+        SuccessHandlerUtil.handleGet(res, next, quiz);
+      }
     } catch (error) {
       next(error);
     }
