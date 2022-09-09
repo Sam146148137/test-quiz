@@ -56,7 +56,6 @@ class QuizzesController {
           message: 'You have already answered the quiz twice this month'
         });
       } else {
-        quiz.image = `${req.protocol}://${req.get('host')}/${quiz.image}`;
         SuccessHandlerUtil.handleGet(res, next, quiz);
       }
     } catch (error) {
