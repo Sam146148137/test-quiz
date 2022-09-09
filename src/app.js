@@ -7,7 +7,7 @@ import passport from 'passport';
 
 // Local modules
 import session from 'express-session';
-// import path from 'path';
+import path from 'path';
 import config from './config/variables.config';
 import MongodbStorage from './storage/mongodb.storage';
 import ErrorHandlerMiddleware from './middlewares/error-handler.middleware';
@@ -23,8 +23,8 @@ class App {
    */
   constructor() {
     this.app = express();
-    // this.app.use(express.static(path.join(__dirname, 'uploadImage')));
-    this.app.use(express.static('uploadImage'));
+    console.log('static file location==========>', path.join(__dirname, 'uploadImage'));
+    this.app.use(express.static(path.join(__dirname, 'uploadImage')));
   }
 
   /**
