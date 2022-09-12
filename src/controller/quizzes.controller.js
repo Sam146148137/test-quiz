@@ -1,6 +1,7 @@
 // Local Modules
 import { QuizzesServices } from '../services';
 import { SuccessHandlerUtil, ErrorsUtil } from '../utils';
+import config from '../config/variables.config';
 
 class QuizzesController {
   static async add(req, res, next) {
@@ -56,9 +57,9 @@ class QuizzesController {
           message: 'You have already answered the quiz twice this month'
         });
       } else {
-        // quiz.image = `${req.protocol}://${req.get('host')}/${quiz.image}`;
-        console.log(req, 2222222222222222);
-        quiz.image = `${req.protocol}s://${req.get('host')}/uploadedImage/${quiz.image}`;
+        quiz.image = `
+        ${config.PROTOCOL.productionProtocol}://${req.get('host')}/uploadedImage/${quiz.image}
+        `;
         SuccessHandlerUtil.handleGet(res, next, quiz);
       }
     } catch (error) {
