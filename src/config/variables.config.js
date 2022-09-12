@@ -13,6 +13,9 @@ const config = {
   // PROTOCOL: 'http',
   PROTOCOL: 'https',
 
+  // HOST: 'localhost:3030',
+  HOST: 'https://azgayinjoxov.herokuapp.com',
+
   AUTH: {
     JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
     JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
