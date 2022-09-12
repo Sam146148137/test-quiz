@@ -60,7 +60,7 @@ router.get('/',
   UsersController.list);
 
 router.get('/myProfile',
-  AuthMiddleware.authenticateFor([role.member]),
+  AuthMiddleware.authenticateFor([role.member, role.admin]),
   UsersController.myProfile);
 
 router.get('/:id',
