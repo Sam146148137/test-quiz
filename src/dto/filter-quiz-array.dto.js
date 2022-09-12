@@ -5,7 +5,8 @@ class FilterQuizDto {
       array.push({
         quizId: item.quizId,
         score: item.score,
-        title: item.quiz[0].title
+        title: item.quiz[0].title,
+        image: item.quiz[0].image
       });
     });
     return array;
