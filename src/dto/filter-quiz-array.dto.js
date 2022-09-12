@@ -9,8 +9,8 @@ class FilterQuizDto {
         quizId: item.quizId,
         score: item.score,
         title: item.quiz[0].title,
-        // image: `${config.PROTOCOL}://${config.HOST}/uploadedImage/${item.quiz[0].image}`
-        image: item.quiz[0].image
+        image: `${config.PROTOCOL}://${config.HOST}/uploadedImage/${item.quiz[0].image}`
+        // image: item.quiz[0].image
       });
     });
     return array;
