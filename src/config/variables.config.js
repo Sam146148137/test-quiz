@@ -1,5 +1,5 @@
 const config = {
-  LOG_LEVEL: process.env.LOG_LEVEL,
+  // LOG_LEVEL: process.env.LOG_LEVEL,
   PORT: process.env.PORT || 3040,
   ONE_WAY_HASH_SECRET: process.env.ONE_WAY_HASH_SECRET,
   DISABLE_REQUEST_LOG: process.env.DISABLE_REQUEST_LOG,
@@ -7,8 +7,8 @@ const config = {
   UPLOAD_IMAGES: 'uploadImage',
   MONGODB: {
     // eslint-disable-next-line max-len
-    URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
-    // URL: 'mongodb://localhost:27017/test_quiz'
+    // URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
+    URL: 'mongodb://localhost:27017/test_quiz'
   },
   // PROTOCOL: 'http',
   PROTOCOL: 'https',
