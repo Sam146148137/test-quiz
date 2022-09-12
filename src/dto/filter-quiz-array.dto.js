@@ -4,6 +4,7 @@ class FilterQuizDto {
   static filterQuizArray(quizArray) {
     const array = [];
     quizArray.forEach((item) => {
+      console.log('logging item => ', item);
       array.push({
         quizId: item.quizId,
         score: item.score,
