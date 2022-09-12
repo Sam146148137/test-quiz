@@ -1,5 +1,5 @@
 const config = {
-  LOG_LEVEL: process.env.LOG_LEVEL,
+  // LOG_LEVEL: process.env.LOG_LEVEL,
   PORT: process.env.PORT || 3040,
   ONE_WAY_HASH_SECRET: process.env.ONE_WAY_HASH_SECRET,
   DISABLE_REQUEST_LOG: process.env.DISABLE_REQUEST_LOG,
