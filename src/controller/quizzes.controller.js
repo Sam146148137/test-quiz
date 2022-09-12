@@ -57,9 +57,7 @@ class QuizzesController {
           message: 'You have already answered the quiz twice this month'
         });
       } else {
-        quiz.image = `
-        ${config.PROTOCOL.productionProtocol}://${req.get('host')}/uploadedImage/${quiz.image}
-        `;
+        quiz.image = `${config.PROTOCOL}://${req.get('host')}/uploadedImage/${quiz.image}`;
         SuccessHandlerUtil.handleGet(res, next, quiz);
       }
     } catch (error) {

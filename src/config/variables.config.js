@@ -10,7 +10,8 @@ const config = {
     URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
     // URL: 'mongodb://localhost:27017/test_quiz'
   },
-  PROTOCOL: { localProtocol: 'http', productionProtocol: 'https' },
+  // PROTOCOL: 'http',
+  PROTOCOL: 'https',
 
   AUTH: {
     JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
