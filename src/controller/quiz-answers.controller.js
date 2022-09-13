@@ -20,6 +20,17 @@ class QuizAnswersController {
       next(error);
     }
   }
+
+  static async list(req, res, next) {
+    try {
+      const { quizId } = req.params;
+      const params = req.query;
+      const quizAnswers = await QuizAnswersServices.list(quizId, params);
+      SuccessHandlerUtil.handleList(res, next, quizAnswers);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default QuizAnswersController;

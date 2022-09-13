@@ -13,7 +13,7 @@ const defaultHidden = {
   __v: true,
   password: true,
   activationCode: true,
-  createdAt: true,
+  // createdAt: true,
   updatedAt: true
 };
 

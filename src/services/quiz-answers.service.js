@@ -61,6 +61,10 @@ class QuizAnswersServices {
 
     return QuizAnswersModel.updateByQuizIdUserId(quizId, userId, payload);
   }
+
+  static async list(quizId, params) {
+    return QuizAnswersModel.list(quizId, params);
+  }
 }
 
 export default QuizAnswersServices;
