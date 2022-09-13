@@ -17,14 +17,23 @@ const QuizAnswersSchema = {
     })
   },
 
+  //   listScema: {
+  //     params: Joi.object({ quizId: ID.required() }),
+  //     query: Joi.object({
+  //       month: Joi.array().items(Joi.number().min(1).max(12)),
+  //       gender: Joi.string().valid(...Object.values(gender)),
+  //       score: Joi.number(),
+  //       dateTime: Joi.number(),
+  //       age: Joi.number()
+  //     })
+  //   }
+  // };
+
   listScema: {
     params: Joi.object({ quizId: ID.required() }),
     query: Joi.object({
-      month: Joi.array().items(Joi.number().min(1).max(12)),
       gender: Joi.string().valid(...Object.values(gender)),
-      score: Joi.number(),
-      dateTime: Joi.number(),
-      age: Joi.number()
+      score: Joi.number()
     })
   }
 };

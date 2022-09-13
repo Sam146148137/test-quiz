@@ -1,5 +1,7 @@
 // Local Modules
 import { QuizAnswersModel, QuizzesModel } from '../models';
+import { FilterQuizDto } from '../dto';
+import { ErrorsUtil } from '../utils';
 
 class QuizzesServices {
   static add(payload) {
@@ -24,8 +26,14 @@ class QuizzesServices {
     return QuizzesModel.getDetailedById(id);
   }
 
-  static list(limit, offset) {
-    return QuizzesModel.list(limit, offset);
+  static async list(limit, offset) {
+    const quizzes = await QuizzesModel.list(limit, offset);
+
+    if (!quizzes) throw new ErrorsUtil.Forbidden('Quizzes is not found');
+
+    if (quizzes.length === 0) return quizzes;
+
+    return FilterQuizDto.filterQuizList(quizzes);
   }
 }
 

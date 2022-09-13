@@ -56,11 +56,11 @@ class QuizAnswersModel extends BaseModel {
 
   list(quizId, params) {
     const {
-      month,
+      // month,
       gender,
-      score,
-      dateTime,
-      age
+      score
+      // dateTime,
+      // age
     } = params;
 
     // Filter
@@ -68,9 +68,9 @@ class QuizAnswersModel extends BaseModel {
       $expr: { $eq: ['$quizId', { $toObjectId: quizId }] }
     };
 
-    if (month) {
-      query.$or = month.map((m) => ({ createdAtMonth: m }));
-    }
+    // if (month) {
+    //   query.$or = month.map((m) => ({ createdAtMonth: m }));
+    // }
 
     if (gender) {
       query['answerUsers.gender'] = gender;
@@ -82,13 +82,13 @@ class QuizAnswersModel extends BaseModel {
       sort.score = score;
     }
 
-    if (dateTime) {
-      sort.createdAt = dateTime;
-    }
+    // if (dateTime) {
+    //   sort.createdAt = dateTime;
+    // }
 
-    if (age) {
-      sort['answerUsers.age'] = age;
-    }
+    // if (age) {
+    //   sort['answerUsers.age'] = age;
+    // }
 
     return this.model
       .aggregate([
