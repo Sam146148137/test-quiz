@@ -14,7 +14,7 @@ const {
   ACCESS_TOKEN_ACTIVE_TIME
 } = AUTH;
 
-const { Forbidden, UnauthorizedError } = ErrorsUtil;
+const { InputValidationError, UnauthorizedError } = ErrorsUtil;
 
 export default class AuthService {
   static generateTokens(payload) {
@@ -66,9 +66,9 @@ export default class AuthService {
   static async login(email, password) {
     const user = await UsersModel.findByEmail(email);
 
-    if (!user) throw new Forbidden(`User not exists with email: ${email}`);
+    if (!user) throw new InputValidationError('Invalid email or password');
     if (!CryptoUtil.isValidPassword(password, user.password)) {
-      throw new UnauthorizedError('Invalid password');
+      throw new InputValidationError('Invalid email or password');
     }
 
     const { id: userId, role } = user;
