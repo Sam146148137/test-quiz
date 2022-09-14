@@ -50,7 +50,8 @@ const UsersSchema = {
       age: Joi.number().min(2).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required(),
-      role: Joi.string().valid(...Object.values(role)).required()
+      role: Joi.string().valid(...Object.values(role)).required(),
+      phone: Joi.string().trim().min(12).max(12)
     })
   },
 

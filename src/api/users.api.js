@@ -55,7 +55,7 @@ router.put('/:id',
   UsersController.updateById);
 
 router.get('/',
-  // AuthMiddleware.authenticateFor([role.admin]),
+  AuthMiddleware.authenticateFor([role.admin]),
   UsersValidationMiddleware.validateListArgs,
   UsersController.list);
 

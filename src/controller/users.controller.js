@@ -89,7 +89,6 @@ export default class UsersController {
           numbers: true
         })
       };
-
       const { password } = payload;
 
       const user = await UsersServices.signup(payload);
@@ -111,7 +110,6 @@ export default class UsersController {
           numbers: true
         })
       };
-
       const { password } = payload;
 
       const user = await UsersServices.signup(payload);
@@ -159,7 +157,6 @@ export default class UsersController {
       const { id } = req.params;
 
       const user = await UsersServices.getById(id);
-
       SuccessHandlerUtil.handleGet(res, next, user);
     } catch (error) {
       next(error);
@@ -169,8 +166,8 @@ export default class UsersController {
   static async deleteById(req, res, next) {
     try {
       const { id } = req.params;
-      await UsersServices.deleteById(id);
 
+      await UsersServices.deleteById(id);
       SuccessHandlerUtil.handleUpdate(res, next, { success: true });
     } catch (error) {
       next(error);
@@ -180,8 +177,8 @@ export default class UsersController {
   static async myProfile(req, res, next) {
     try {
       const { user } = res.locals.auth;
-      const userInfo = await UsersServices.getByUserId(user.userId);
 
+      const userInfo = await UsersServices.getByUserId(user.userId);
       SuccessHandlerUtil.handleGet(res, next, userInfo);
     } catch (error) {
       next(error);
@@ -194,7 +191,6 @@ export default class UsersController {
       const update = req.body;
 
       const userInfo = await UsersServices.updateById(user.userId, update);
-      // res.clearCookie('userCookie');
       SuccessHandlerUtil.handleGet(res, next, UsersDto.formatUserToJson(userInfo));
     } catch (error) {
       next(error);

@@ -43,8 +43,6 @@ export default class AuthService {
     }
   }
 
-  // TODO Logout function
-
   static async refresh(token) {
     const user = AuthService.validateRefreshToken(token);
     const { email, userId, role } = user;
@@ -58,8 +56,6 @@ export default class AuthService {
     const payload = {
       accessToken, refreshToken, email, userId, scope, accessTokenExpiresAt, refreshTokenExpiresAt
     };
-
-    // TODO save in redis
     return payload;
   }
 
@@ -88,8 +84,6 @@ export default class AuthService {
       refreshTokenExpiresAt,
       type: (role === 'member') ? 'website' : role
     };
-
-    // TODO save in redis
     return payload;
   }
 }

@@ -7,7 +7,6 @@ import passport from 'passport';
 
 // Local modules
 import session from 'express-session';
-import path from 'path';
 import config from './config/variables.config';
 import MongodbStorage from './storage/mongodb.storage';
 import ErrorHandlerMiddleware from './middlewares/error-handler.middleware';
@@ -23,9 +22,7 @@ class App {
    */
   constructor() {
     this.app = express();
-    console.log('upload image location => ', path.join(__dirname, 'uploadImage'));
-    // this.app.use(express.static(path.join(__dirname, 'uploadImage')));
-    this.app.use('/uploadedImage', express.static('uploadImage'));
+    this.app.use(`/${config.UPLOAD_IMAGES}`, express.static(`${config.UPLOAD_IMAGES}`));
   }
 
   /**

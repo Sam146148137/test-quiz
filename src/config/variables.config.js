@@ -4,17 +4,11 @@ const config = {
   ONE_WAY_HASH_SECRET: process.env.ONE_WAY_HASH_SECRET,
   DISABLE_REQUEST_LOG: process.env.DISABLE_REQUEST_LOG,
   CORS: process.env.CORS?.split(',') || '*',
-  UPLOAD_IMAGES: 'uploadImage',
+  UPLOAD_IMAGES: 'uploadedImage',
   MONGODB: {
-    // eslint-disable-next-line max-len
-    URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/?retryWrites=true&w=majority'
+    URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/Quiz'
     // URL: 'mongodb://localhost:27017/test_quiz'
   },
-  // PROTOCOL: 'http',
-  PROTOCOL: 'https',
-
-  // HOST: 'localhost:3030',
-  HOST: 'azgayinjoxov.herokuapp.com',
 
   AUTH: {
     JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,

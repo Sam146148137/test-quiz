@@ -1,9 +1,7 @@
 // NPM Modules
 import Joi from 'joi';
 
-import {
-  ID, limit, offset
-} from './type';
+import { ID, limit, offset } from './type';
 
 const QuestionsSchema = {
   addSchema: {

@@ -12,7 +12,7 @@ class QuizzesController {
 
       const { file } = req;
       if (file === undefined) throw new ErrorsUtil.InputValidationError('No Images Found...');
-      payload.image = `${file.filename}`;
+      payload.image = `${config.UPLOAD_IMAGES}/${file.filename}`;
 
       const quiz = await QuizzesServices.add(payload);
       SuccessHandlerUtil.handleAdd(res, next, quiz);
@@ -57,7 +57,6 @@ class QuizzesController {
           message: 'You have already answered the quiz twice this month'
         });
       } else {
-        quiz.image = `${config.PROTOCOL}://${req.get('host')}/uploadedImage/${quiz.image}`;
         SuccessHandlerUtil.handleGet(res, next, quiz);
       }
     } catch (error) {

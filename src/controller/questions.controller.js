@@ -5,7 +5,6 @@ class QuestionsController {
   static async add(req, res, next) {
     try {
       const payload = req.body;
-
       const { user } = res.locals.auth;
       payload.userId = user.userId;
       const question = await QuestionsServices.add(payload);
@@ -44,7 +43,6 @@ class QuestionsController {
       const { id } = req.params;
 
       const question = await QuestionsServices.getById(id);
-
       SuccessHandlerUtil.handleGet(res, next, question);
     } catch (error) {
       next(error);
@@ -55,7 +53,6 @@ class QuestionsController {
     try {
       const { id } = req.params;
       await QuestionsServices.deleteById(id);
-
       SuccessHandlerUtil.handleUpdate(res, next, { success: true });
     } catch (error) {
       next(error);

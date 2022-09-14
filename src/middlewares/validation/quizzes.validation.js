@@ -2,7 +2,7 @@
 import { QuizzesScema } from './schemes';
 import ValidatorUtil from './util/validator.util';
 
-class Quizzesvalidation {
+class QuizzesValidation {
   static validateAddArgs(req, res, next) {
     ValidatorUtil.validateArgs(req, QuizzesScema.addSchema, next);
   }
@@ -20,4 +20,4 @@ class Quizzesvalidation {
   }
 }
 
-export default Quizzesvalidation;
+export default QuizzesValidation;

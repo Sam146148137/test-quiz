@@ -15,7 +15,7 @@ router.post('/',
   QuizAnswersController.add);
 
 router.get('/:quizId',
-  AuthMiddlaware.authenticateFor([role.admin, role.member]),
+  AuthMiddlaware.authenticateFor([role.admin]),
   QuizAnswersValidation.validateListArgs,
   QuizAnswersController.list);
 export default router;

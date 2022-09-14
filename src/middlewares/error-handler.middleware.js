@@ -21,14 +21,7 @@ export default class ErrorHandlerMiddleware {
     const result = {
       status, code, message: message || error.message, data: error.data
     };
-    // if (status === 400) {
-    //   const { body, query, params } = request;
-    //   console.log(JSON.stringify({
-    //     body, query, params, message: error.message
-    //   }, null, 2));
-    // }
 
-    // temp. log to explore and add more cases.
     if (result.status === 500) {
       console.log('Case: ', error.status, error.code, error.name, error.message);
     }

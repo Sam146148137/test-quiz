@@ -13,8 +13,6 @@ export default class MongodbStorage {
       useUnifiedTopology: true
     };
 
-    // mongoose.set('useCreateIndex', true)
-
     mongoose.connection.on('connected', MongodbStorage._onConnected);
     mongoose.connection.on('error', MongodbStorage._onError);
     mongoose.connection.on('disconnected', MongodbStorage._onDisconnected);

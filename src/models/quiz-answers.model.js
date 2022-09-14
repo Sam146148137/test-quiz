@@ -27,8 +27,15 @@ class QuizAnswersModel extends BaseModel {
   }
 
   updateByQuizIdUserId(quizId, userId, payload) {
-    const query = { quizId, userId };
-    const options = { runValidators: true, new: true, upsert: true };
+    const query = {
+      quizId,
+      userId
+    };
+    const options = {
+      runValidators: true,
+      new: true,
+      upsert: true
+    };
     return this.model.findOneAndUpdate(query, payload, options);
   }
 
@@ -56,21 +63,14 @@ class QuizAnswersModel extends BaseModel {
 
   list(quizId, params) {
     const {
-      // month,
       gender,
       score
-      // dateTime,
-      // age
     } = params;
 
     // Filter
     const query = {
       $expr: { $eq: ['$quizId', { $toObjectId: quizId }] }
     };
-
-    // if (month) {
-    //   query.$or = month.map((m) => ({ createdAtMonth: m }));
-    // }
 
     if (gender) {
       query['answerUsers.gender'] = gender;
@@ -80,15 +80,9 @@ class QuizAnswersModel extends BaseModel {
     const sort = {};
     if (score) {
       sort.score = score;
+    } else {
+      sort.score = 1;
     }
-
-    // if (dateTime) {
-    //   sort.createdAt = dateTime;
-    // }
-
-    // if (age) {
-    //   sort['answerUsers.age'] = age;
-    // }
 
     return this.model
       .aggregate([
@@ -106,10 +100,6 @@ class QuizAnswersModel extends BaseModel {
           }
         },
         {
-          // $sort: {
-          //   'answerUsers.age': 1
-          // }
-
           $sort: sort
         },
         {
@@ -132,15 +122,7 @@ class QuizAnswersModel extends BaseModel {
         {
           $match: {
             $and: [
-              // {
-              //   $or: [
-              //     { createdAtMonth: 8 },
-              //     { createdAtMonth: 7 }
-              //   ]
-              // },
-              // { 'answerUsers.gender': 'female' },
               query
-              // { $expr: { $eq: ['$quizId', { $toObjectId: quizId }] } }
             ]
           }
         }

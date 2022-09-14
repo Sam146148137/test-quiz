@@ -5,9 +5,9 @@ class QuizAnswersController {
   static async add(req, res, next) {
     try {
       const payload = req.body;
-
       const { user } = res.locals.auth;
       payload.userId = user.userId;
+
       const question = await QuizAnswersServices.add(payload);
       if (question.success === false) {
         SuccessHandlerUtil._sendResponse(res, 400, {
