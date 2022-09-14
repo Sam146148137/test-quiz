@@ -83,6 +83,7 @@ export default class UsersController {
         firstName: req.user._json.first_name,
         lastName: req.user._json.last_name,
         email: req.user._json.email,
+        phone: '+37477000000',
         password: generator.generate({
           length: 10,
           numbers: true
