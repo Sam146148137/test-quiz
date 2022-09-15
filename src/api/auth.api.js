@@ -20,8 +20,10 @@ router.get('/facebook', passportFacebook.authenticate('facebook', {
 
 router.get('/facebook/callback',
   passportFacebook.authenticate('facebook', {
-    successRedirect: '/api/v1/users/facebook',
+    // successRedirect: '/api/v1/users/facebook',
     failureRedirect: '/error'
+  }, (req, res) => {
+    console.log(req, 1111111111111111111111111111);
   }));
 
 router.get('/google',
