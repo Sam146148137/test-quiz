@@ -31,8 +31,9 @@ router.get('/google/callback',
   passportGoogle.authenticate('google', { failureRedirect: '/error' }),
   (req, res) => {
   // Successful authentication, redirect success.
-  //   res.redirect('/api/v1/users/google');
-    res.status(200);
+    console.log(9999);
+    res.redirect('/users/google');
+  //   res.status(200);
   });
 
 export default router;
