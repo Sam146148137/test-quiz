@@ -60,8 +60,7 @@ class App {
 */
   _setCors() {
     this.app.use(cors({
-      // origin: CORS,
-      origin: ['https://national-assembly-app.herokuapp.com/', 'https://azgayinjoxov.herokuapp.com/'],
+      origin: CORS,
       methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
       credentials: true,
