@@ -28,12 +28,6 @@ router.get('/google',
   passportGoogle.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: '/error' }),
-  (req, res) => {
-  // Successful authentication, redirect success.
-    console.log(9999);
-    res.redirect('/users/google');
-  //   res.status(200);
-  });
+  passportGoogle.authenticate('google', { failureRedirect: '/error', successRedirect: '/api/v1/users/facebook' }));
 
 export default router;
