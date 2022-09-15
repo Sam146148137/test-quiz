@@ -4,7 +4,7 @@ const config = {
   ONE_WAY_HASH_SECRET: process.env.ONE_WAY_HASH_SECRET,
   DISABLE_REQUEST_LOG: process.env.DISABLE_REQUEST_LOG,
   // CORS: process.env.CORS?.split(',') ,
-  CORS: 'https://national-assembly-app.herokuapp.com',
+  CORS: 'https://national-assembly-app.herokuapp.com/signup',
   UPLOAD_IMAGES: 'uploadedImage',
   MONGODB: {
     URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/Quiz'
