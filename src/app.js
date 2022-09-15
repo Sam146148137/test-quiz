@@ -59,15 +59,14 @@ class App {
   *  Reflect any request that is coming from an origin ending with one specified in configs.
 */
   _setCors() {
-    this.app.use(cors());
-    // this.app.use(cors({
-    //   origin: CORS,
-    //   methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    //   allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
-    //   credentials: true,
-    //   optionsSuccessStatus: 200,
-    //   maxAge: -1
-    // }));
+    this.app.use(cors({
+      origin: CORS,
+      methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
+      credentials: true,
+      optionsSuccessStatus: 200,
+      maxAge: -1
+    }));
   }
 
   /* @private
