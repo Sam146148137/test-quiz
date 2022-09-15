@@ -11,7 +11,7 @@ passport.use(new FacebookStrategy.Strategy({
   profileFields: ['id', 'displayName', 'email', 'name', 'birthday', 'gender']
 },
 ((accessToken, refreshToken, profile, done) => {
-  done(profile);
+  done(null, profile);
 })));
 
 passport.serializeUser((user, done) => {
