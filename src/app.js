@@ -60,7 +60,14 @@ class App {
 */
   _setCors() {
     this.app.use(cors({
-      origin: CORS,
+      // origin: CORS,
+      origin: (origin, callback) => {
+        if (config.WHITE_LIST.indexOf(origin) !== -1) {
+          callback(null, true);
+        } else {
+          callback(new Error());
+        }
+      },
       methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
       credentials: true,
