@@ -17,17 +17,15 @@ const { CORS, DISABLE_REQUEST_LOG, MONGODB } = config;
 const cookieParser = require('cookie-parser');
 
 class App {
-  /**
-   * @constructor
-   */
+/* @constructor
+*/
   constructor() {
     this.app = express();
     this.app.use(`/${config.UPLOAD_IMAGES}`, express.static(`${config.UPLOAD_IMAGES}`));
   }
 
-  /**
-   * @description Initialize the App.
-   */
+  /* @description Initialize the App.
+*/
   async init() {
     await App._initializeStorage();
     this._setRequestLogger();
@@ -39,30 +37,27 @@ class App {
     this._setErrorHandler();
   }
 
-  /**
-   * @private
-   * @description Init cookie
-   */
+  /* @private
+* @description Init cookie
+*/
 
   _initCookieParser() {
     this.app.use(cookieParser());
   }
 
-  /**
-   * @private
-   * @description Set request logger.
-   */
+  /* @private
+* @description Set request logger.
+*/
   _setRequestLogger() {
     if (DISABLE_REQUEST_LOG !== '1') {
       this.app.use(morgan('dev'));
     }
   }
 
-  /**
-   * @private
-   * @description Set Cross-origin resource sharing.
-   *  Reflect any request that is coming from an origin ending with one specified in configs.
-   */
+  /* @private
+* @description Set Cross-origin resource sharing.
+  *  Reflect any request that is coming from an origin ending with one specified in configs.
+*/
   _setCors() {
     this.app.use(cors({
       origin: CORS,
@@ -74,11 +69,10 @@ class App {
     }));
   }
 
-  /**
-   * @private
-   * @description Set body parser:
-   *  1. Parses the text as JSON & exposes the resulting object on req.body (limit 1 mb).
-   */
+  /* @private
+* @description Set body parser:
+      *  1. Parses the text as JSON & exposes the resulting object on req.body (limit 1 mb).
+*/
   _setRequestParser() {
     this.app.use(bodyParser.json());
     const options = { limit: '200mb', extended: false };
@@ -97,18 +91,16 @@ class App {
     this.app.use(passport.session());
   }
 
-  /**
-   * @private
-   * @description Initialize storage.
-   */
+  /* @private
+* @description Initialize storage.
+*/
   static _initializeStorage() {
     MongodbStorage.init(MONGODB.URL);
   }
 
-  /**
-   * @private
-   * @description Initialize API.
-   */
+  /* @private
+* @description Initialize API.
+*/
   _initializeApi() {
     this.app.use('/api/v1', Api);
   }

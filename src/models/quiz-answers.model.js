@@ -72,8 +72,8 @@ class QuizAnswersModel extends BaseModel {
       $expr: { $eq: ['$quizId', { $toObjectId: quizId }] }
     };
 
-    if (gender) {
-      query['answerUsers.gender'] = gender;
+    if (gender?.length) {
+      query.$or = gender.map((g) => ({ 'answerUsers.gender': g }));
     }
 
     // Sort
