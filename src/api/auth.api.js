@@ -23,24 +23,15 @@ router.get('/facebook', passportFacebook.authenticate('facebook', {
 }));
 
 router.get('/facebook/callback',
-  passportFacebook.authenticate('facebook', {
-    successRedirect: '/api/v1/users/facebook',
-    failureRedirect: '/error'
-  }));
-
-router.get('/google',
-  passportGoogle.authenticate('google', { scope: ['profile', 'email'] }));
-
-router.get('/google/callback',
-  passportGoogle.authenticate('google', { failureRedirect: '/error' }),
+  passportGoogle.authenticate('facebook', { failureRedirect: '/error' }),
   async (req, res) => {
-  // Successful authentication, redirect success.
+    // Successful authentication, redirect success.
 
     const payload = {
-      firstName: req.user.given_name,
-      lastName: req.user.family_name,
-      email: req.user.email,
-      phone: '+37455055055',
+      firstName: req.user._json.first_name,
+      lastName: req.user._json.last_name,
+      email: req.user._json.email,
+      phone: '+37499000000',
       password: generator.generate({
         length: 10,
         numbers: true
@@ -55,7 +46,35 @@ router.get('/google/callback',
     }
     const loginUser = await AuthService.loginGoogle(payload.email);
     res.redirect(`https://national-assembly-app.herokuapp.com/signup/${JSON.stringify(loginUser)}`);
-    // res.redirect(`http://localhost:8080/signup/${JSON.stringify(loginUser)}`);
+  });
+
+router.get('/google',
+  passportGoogle.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/google/callback',
+  passportGoogle.authenticate('google', { failureRedirect: '/error' }),
+  async (req, res) => {
+  // Successful authentication, redirect success.
+
+    const payload = {
+      firstName: req.user.given_name,
+      lastName: req.user.family_name,
+      email: req.user.email,
+      phone: '+37499000000',
+      password: generator.generate({
+        length: 10,
+        numbers: true
+      })
+    };
+    const { password } = payload;
+
+    const alreadyRegisteredUser = await UsersServices.findByEmail(payload.email);
+    if (!alreadyRegisteredUser) {
+      await UsersServices.signup(payload);
+      await EmailUtil.sendSuccessSignup(payload.email, password);
+    }
+    const loginUser = await AuthService.loginGoogle(payload.email);
+    res.redirect(`https://national-assembly-app.herokuapp.com/signup/${JSON.stringify(loginUser)}`);
   });
 
 export default router;
