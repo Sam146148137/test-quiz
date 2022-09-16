@@ -96,4 +96,8 @@ export default class UsersServices {
 
     return UsersModel.deleteById(id);
   }
+
+  static findByEmail(email) {
+    return UsersModel.findByEmail(email);
+  }
 }
