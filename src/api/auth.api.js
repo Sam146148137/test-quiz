@@ -55,7 +55,7 @@ router.get('/google/callback',
     }
 
     const loginUser = await AuthService.loginGoogle(payload.email);
-    res.redirect(`https://national-assembly-app.herokuapp.com/${JSON.stringify(loginUser)}`);
+    res.redirect(`https://national-assembly-app.herokuapp.com/signup/${JSON.stringify(loginUser)}`);
   });
 
 export default router;
