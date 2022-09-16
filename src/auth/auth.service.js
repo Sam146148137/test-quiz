@@ -53,10 +53,9 @@ export default class AuthService {
     const accessTokenExpiresAt = new Date().getTime() + parse(ACCESS_TOKEN_ACTIVE_TIME);
     const refreshTokenExpiresAt = new Date().getTime() + parse(REFRESH_TOKEN_ACTIVE_TIME);
     const scope = `access:${role}`;
-    const payload = {
+    return {
       accessToken, refreshToken, email, userId, scope, accessTokenExpiresAt, refreshTokenExpiresAt
     };
-    return payload;
   }
 
   static async login(email, password) {
@@ -74,7 +73,7 @@ export default class AuthService {
     const refreshTokenExpiresAt = new Date().getTime() + parse(REFRESH_TOKEN_ACTIVE_TIME);
     const scope = `access:${role}`;
 
-    const payload = {
+    return {
       accessToken,
       refreshToken,
       email,
@@ -84,6 +83,30 @@ export default class AuthService {
       refreshTokenExpiresAt,
       type: (role === 'member') ? 'website' : role
     };
-    return payload;
+  }
+
+  static async loginGoogle(email) {
+    const user = await UsersModel.findByEmail(email);
+
+    if (!user) throw new InputValidationError('Invalid email or password');
+
+    const { id: userId, role } = user;
+
+    const { accessToken, refreshToken } = AuthService.generateTokens({ email, userId, role });
+
+    const accessTokenExpiresAt = new Date().getTime() + parse(ACCESS_TOKEN_ACTIVE_TIME);
+    const refreshTokenExpiresAt = new Date().getTime() + parse(REFRESH_TOKEN_ACTIVE_TIME);
+    const scope = `access:${role}`;
+
+    return {
+      accessToken,
+      refreshToken,
+      email,
+      userId,
+      scope,
+      accessTokenExpiresAt,
+      refreshTokenExpiresAt,
+      type: (role === 'member') ? 'website' : role
+    };
   }
 }

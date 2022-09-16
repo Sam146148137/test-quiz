@@ -31,10 +31,6 @@ router.post('/email',
   UsersValidationMiddleware.validateArg,
   UsersController.emailExist);
 
-router.get('/facebook', UsersController.facebookSignup);
-
-router.get('/google', UsersController.signupGoogle);
-
 router.post('/',
   UsersValidationMiddleware.validateSignupArgs,
   UsersController.signup);
