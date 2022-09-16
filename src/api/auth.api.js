@@ -53,7 +53,7 @@ router.get('/google/callback',
       await UsersServices.signup(payload);
       await EmailUtil.sendSuccessSignup(payload.email, password);
     }
-
+    console.log(999);
     const loginUser = await AuthService.loginGoogle(payload.email);
     res.redirect(`https://national-assembly-app.herokuapp.com/signup/${JSON.stringify(loginUser)}`);
     // res.redirect(`http://localhost:8080/signup/${JSON.stringify(loginUser)}`);
