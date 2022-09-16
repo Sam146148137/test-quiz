@@ -76,49 +76,6 @@ export default class UsersController {
     }
   }
 
-  // static async facebookSignup(req, res, next) {
-  //   try {
-  //     const payload = {
-  //       firstName: req.user._json.first_name,
-  //       lastName: req.user._json.last_name,
-  //       email: req.user._json.email,
-  //       phone: '+37477000000',
-  //       password: generator.generate({
-  //         length: 10,
-  //         numbers: true
-  //       })
-  //     };
-  //     const { password } = payload;
-  //
-  //     const user = await UsersServices.signup(payload);
-  //     await EmailUtil.sendSuccessSignup(payload.email, password);
-  //     SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // }
-
-  // static async signupGoogle(req, res, next) {
-  //   try {
-  //     const payload = {
-  //       firstName: req.user.given_name,
-  //       lastName: req.user.family_name,
-  //       email: req.user.email,
-  //       password: generator.generate({
-  //         length: 10,
-  //         numbers: true
-  //       })
-  //     };
-  //     const { password } = payload;
-  //
-  //     const user = await UsersServices.signup(payload);
-  //     await EmailUtil.sendSuccessSignup(payload.email, password);
-  //     SuccessHandlerUtil.handleAdd(res, next, UsersDto.formatUserToJson(user));
-  //   } catch (error) {
-  //     next(error);
-  //   }
-  // }
-
   static async add(req, res, next) {
     try {
       const payload = req.body;
