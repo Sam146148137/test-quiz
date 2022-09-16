@@ -6,8 +6,8 @@ import role from '../../../enum/role.enum';
 const UsersSchema = {
   signupSchema: {
     body: Joi.object({
-      firstName: Joi.string().min(1).required(),
-      lastName: Joi.string().min(1).required(),
+      firstName: Joi.string().min(1).max(15).required(),
+      lastName: Joi.string().min(1).max(20).required(),
       gender: Joi.string().valid('male', 'female', 'other').required(),
       age: Joi.number().required(),
       email: Joi.string().email().required(),
@@ -45,8 +45,8 @@ const UsersSchema = {
 
   addSchema: {
     body: Joi.object({
-      firstName: Joi.string().min(1).required(),
-      lastName: Joi.string().min(1).required(),
+      firstName: Joi.string().min(1).max(15).required(),
+      lastName: Joi.string().min(1).max(20).required(),
       age: Joi.number().min(2).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(7).required(),
@@ -58,8 +58,8 @@ const UsersSchema = {
   updateSchema: {
     params: Joi.object({ id: ID.required() }),
     body: Joi.object({
-      firstName: Joi.string().min(1),
-      lastName: Joi.string().min(1),
+      firstName: Joi.string().min(1).max(15).required(),
+      lastName: Joi.string().min(1).max(20).required(),
       age: Joi.number().min(2),
       gender: Joi.string().valid('male', 'female', 'other'),
       email: Joi.string().email(),
@@ -76,8 +76,8 @@ const UsersSchema = {
 
   updateMyProfileSchema: {
     body: Joi.object({
-      firstName: Joi.string().min(1),
-      lastName: Joi.string().min(1),
+      firstName: Joi.string().min(1).max(15).required(),
+      lastName: Joi.string().min(1).max(20).required(),
       age: Joi.number().min(2),
       email: Joi.string().email(),
       phone: Joi.string().trim().min(12).max(12)
