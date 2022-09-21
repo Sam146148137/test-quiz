@@ -20,6 +20,7 @@ const QuizAnswersSchema = {
   listScema: {
     params: Joi.object({ quizId: ID.required() }),
     query: Joi.object({
+      search: Joi.string().min(1).max(20),
       gender: Joi.array().items(Joi.string().valid(...Object.values(gender))),
       score: Joi.number()
     })

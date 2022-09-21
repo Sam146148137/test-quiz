@@ -63,6 +63,7 @@ class QuizAnswersModel extends BaseModel {
 
   list(quizId, params) {
     const {
+      search,
       gender,
       score
     } = params;
@@ -71,6 +72,39 @@ class QuizAnswersModel extends BaseModel {
     const query = {
       $expr: { $eq: ['$quizId', { $toObjectId: quizId }] }
     };
+
+    if (search) {
+      query.$or = [
+        {
+          'answerUsers.firstName': {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          'answerUsers.lastName': {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        {
+          'answerUsers.email': {
+            $regex: search,
+            $options: 'i'
+          }
+        },
+        { 'answerUsers.gender': search },
+        { 'answerUsers.age': +search },
+        { score: +search }
+      ];
+
+      if (/^\d{4}(\.+\d{2}){0,2}$/g.test(search)) {
+        const date = new Date(search);
+        if (date instanceof Date && !Number.isNaN(date.valueOf())) {
+          query.$or.push({ createdAt: { $gte: date } });
+        }
+      }
+    }
 
     if (gender?.length) {
       query.$or = gender.map((g) => ({ 'answerUsers.gender': g }));
