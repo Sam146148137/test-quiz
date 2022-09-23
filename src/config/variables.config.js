@@ -7,7 +7,7 @@ const config = {
   UPLOAD_IMAGES: 'uploadedImage',
   MONGODB: {
     URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/Quiz'
-    // URL: 'mongodb://localhost:27017/test_quiz'
+    // URL: 'mongodb://localhost:27017/Quiz'
   },
 
   AUTH: {

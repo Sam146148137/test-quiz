@@ -65,7 +65,8 @@ class QuizAnswersModel extends BaseModel {
     const {
       search,
       gender,
-      score
+      sortType,
+      sortBy
     } = params;
 
     // Filter
@@ -110,14 +111,12 @@ class QuizAnswersModel extends BaseModel {
       query.$or = gender.map((g) => ({ 'answerUsers.gender': g }));
     }
 
-    // Sort
     const sort = {};
-    if (score) {
-      sort.score = score;
+    if (sortBy === 'score' || sortBy === 'createdAt') {
+      sort[sortBy] = +sortType;
     } else {
-      sort.score = 1;
+      sort[`answerUsers.${sortBy}`] = +sortType;
     }
-
     return this.model
       .aggregate([
         {
@@ -133,9 +132,7 @@ class QuizAnswersModel extends BaseModel {
             path: '$answerUsers'
           }
         },
-        {
-          $sort: sort
-        },
+
         {
           $project: {
             _id: 0,
@@ -152,6 +149,9 @@ class QuizAnswersModel extends BaseModel {
             'answerUsers.gender': 1,
             'answerUsers.email': 1
           }
+        },
+        {
+          $sort: sort
         },
         {
           $match: {
