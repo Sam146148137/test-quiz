@@ -10,7 +10,10 @@ const {
 } = EMAIL;
 
 const mailer = nodemailer.createTransport({
-  host: EMAIL_HOST, port: EMAIL_PORT, service: SERVICE, auth: { user: USERNAME, pass: PASSWORD }
+  host: EMAIL_HOST,
+  port: EMAIL_PORT,
+  service: SERVICE,
+  auth: { user: USERNAME, pass: PASSWORD }
 });
 
 export default class EmailUtil {
