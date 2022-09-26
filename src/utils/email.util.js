@@ -32,9 +32,8 @@ export default class EmailUtil {
   static sendSuccessSignup(email, password) {
     const html = `
 <div>
-      <style>
-      </style>
-      <div style="background-color: #263849; max-width: 600px; margin: 0 auto; padding: 10px 20px 0;">
+      <div style="background-color: #263849; max-width: 600px;
+       margin: 0 auto; padding: 10px 20px 0;">
         <div style="padding: 10px; border-bottom: 1px solid #4c5b6f;">
           <img src="cid:logo" alt="logo" width="120" />
         </div>
