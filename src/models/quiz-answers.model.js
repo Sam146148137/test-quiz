@@ -76,24 +76,9 @@ class QuizAnswersModel extends BaseModel {
 
     if (search) {
       query.$or = [
-        {
-          'answerUsers.firstName': {
-            $regex: search,
-            $options: 'i'
-          }
-        },
-        {
-          'answerUsers.lastName': {
-            $regex: search,
-            $options: 'i'
-          }
-        },
-        {
-          'answerUsers.email': {
-            $regex: search,
-            $options: 'i'
-          }
-        },
+        { 'answerUsers.firstName': { $regex: search, $options: 'i' } },
+        { 'answerUsers.lastName': { $regex: search, $options: 'i' } },
+        { 'answerUsers.email': { $regex: search, $options: 'i' } },
         { 'answerUsers.gender': search },
         { 'answerUsers.age': +search },
         { score: +search }

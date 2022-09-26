@@ -76,8 +76,8 @@ const UsersSchema = {
 
   updateMyProfileSchema: {
     body: Joi.object({
-      firstName: Joi.string().min(1).max(255).required(),
-      lastName: Joi.string().min(1).max(255).required(),
+      firstName: Joi.string().min(1).max(255),
+      lastName: Joi.string().min(1).max(255),
       age: Joi.number().min(2),
       email: Joi.string().email(),
       phone: Joi.string().trim().min(12).max(12)
