@@ -9,25 +9,25 @@ const {
   EMAIL_HOST, EMAIL_PORT, SERVICE, USERNAME, PASSWORD
 } = EMAIL;
 
-// const mailer = nodemailer.createTransport({
-//   host: EMAIL_HOST,
-//   port: EMAIL_PORT,
-//   service: SERVICE,
-//   auth: { user: USERNAME, pass: PASSWORD }
-// });
-
-// EMAIL_HOST="smtp.gmail.com"
-// EMAIL_PORT=587
-// EMAIL_SERVICE='gmail'
-// EMAIL_USERNAME='azgayinjoxov2022@gmail.com'
-// EMAIL_PASSWORD='c z y r j n d t b r k v b w p h'
-
 const mailer = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
-  // service: SERVICE,
-  auth: { user: 'noreply@parliament.am', pass: 'F77d8eq/' }
+  host: EMAIL_HOST,
+  port: EMAIL_PORT,
+  service: SERVICE,
+  auth: { user: USERNAME, pass: PASSWORD }
 });
+
+// // EMAIL_HOST="smtp.gmail.com"
+// // EMAIL_PORT=587
+// // EMAIL_SERVICE='gmail'
+// // EMAIL_USERNAME='azgayinjoxov2022@gmail.com'
+// // EMAIL_PASSWORD='c z y r j n d t b r k v b w p h'
+//
+// const mailer = nodemailer.createTransport({
+//   host: 'smtp.ethereal.email',
+//   port: 587,
+//   // service: SERVICE,
+//   auth: { user: 'noreply@parliament.am', pass: 'F77d8eq/' }
+// });
 
 export default class EmailUtil {
   static async sendHtml(from, to, subject, html) {
