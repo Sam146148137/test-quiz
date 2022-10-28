@@ -6,8 +6,8 @@ const config = {
   CORS: process.env.CORS?.split(',') || '*',
   UPLOAD_IMAGES: 'uploadedImage',
   MONGODB: {
-    URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/Quiz'
-    // URL: 'mongodb://localhost:27017/Quiz'
+    // URL: process.env.MONGODB_URL || 'mongodb+srv://test_quiz_admin:test_quiz_admin@cluster0.qmy3kch.mongodb.net/Quiz'
+    URL: 'mongodb://localhost:27017/Quiz'
   },
 
   AUTH: {

@@ -21,7 +21,9 @@ const QuizAnswersSchema = {
     params: Joi.object({ quizId: ID.required() }),
     query: Joi.object({
       search: Joi.string().min(1).max(20),
-      sortBy: Joi.string().valid(...Object.values(QuizAnswersSort)).default(QuizAnswersSort.DEFAULT),
+      sortBy: Joi.string()
+        .valid(...Object.values(QuizAnswersSort))
+        .default(QuizAnswersSort.DEFAULT),
       sortType: Joi.string().valid('1', '-1').default('1')
       // gender: Joi.array().items(Joi.string().valid(...Object.values(gender))),
       // score: Joi.number()
